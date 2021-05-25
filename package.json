@@ -1,0 +1,48 @@
+{
+  "name": "msfs-c17",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "watch:instruments": "npx rollup -wc src/instruments/rollup.config.js",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MSFS-C-17/msfs-c17.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MSFS-C-17/msfs-c17/issues"
+  },
+  "homepage": "https://github.com/MSFS-C-17/msfs-c17#readme",
+  "dependencies": {
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-router-dom": "^5.2.0",
+    "styled-components": "^5.3.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.14.3",
+    "@storybook/addon-actions": "^6.2.9",
+    "@storybook/addon-essentials": "^6.2.9",
+    "@storybook/addon-links": "^6.2.9",
+    "@storybook/react": "^6.2.9",
+    "@types/react": "^17.0.7",
+    "@types/react-dom": "^17.0.5",
+    "@types/react-router-dom": "^5.1.7",
+    "babel-loader": "^8.2.2",
+    "husky": "^6.0.0",
+    "prettier": "^2.3.0",
+    "prop-types": "^15.7.2",
+    "rollup": "^2.50.0",
+    "storybook": "^6.2.9",
+    "tslint": "^6.1.3",
+    "typescript": "^4.2.4"
+  }
+}

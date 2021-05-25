@@ -1,0 +1,51 @@
+C-17 Info
+OVERHEAD
+Comm Switch panel, page 743
+Backup Radio, page 697
+Smoke Detector panel, pg 602
+Personell warning Signs, pg 582
+Warning panel, pg 560
+FCS Panel, page 408
+Hydraulic Panel, page 372
+Anti-Ice, page 356
+Environmental Control panel, page 330
+Lights, page 302-310, 283, 271
+Announciator switches, page 281
+ELEC Systems panel, page 178
+Ground ops pane, page 174
+Fuel inert panel, page 155
+Fuel system panel, page 126
+Engine/APU fire system, page 114
+APU Control Panel, page 104
+Engine Ignition, page 82
+Stall warning system, page 67
+
+FRONT PANEL
+Comms/Nav Control Panel, Pg 650, maybe?
+Mission computer, Pg 644
+Standby instruments, page 557
+Avionics switching panel, page 552
+Displays, page 469
+Flaps/SPDbrk indicator, page 427
+Pilot stick, pg 399
+Landing gear lever, page 389
+Cabin pressure panel, page 342
+Total Fuel, page 124
+Engine/APU fire system, page 110
+Standby engine readout, page 97
+
+PEDESTAL
+Ics control panel, page 726
+IRCM Control Indicator, Pg 633
+Defensive systems panel, Pg 630
+Control Display Unit, pg 626
+Missile Warning System, pg 624
+Missile Warning Control, Pg 622
+Trim Control Panel, page 422
+Throttle quadrant, page 86
+
+Other INFO
+Cockpit layout, page 41
+Lights, page 302-311
+Air refueling, page 283
+INGITION Schematic, page 80
