@@ -53,7 +53,6 @@ export const MFD: React.FC<MFDProps> = ({
   slats
 }) => {
   const currentView = () => {
-    console.log("--->", displayMode);
     if (displayMode === EDisplayModes.OFF) return <></>;
     switch (displayView) {
       case EMFDViews.PFD:

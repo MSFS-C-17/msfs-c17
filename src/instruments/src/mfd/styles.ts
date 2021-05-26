@@ -7,6 +7,6 @@ export const MFDContainer = styled.div`
     css`brightness(${brightness}%) contrast(${contrast}%)`};
   height: 800px;
   width: 800px;
-  font-family: "DYMO Symbols";
+  font-family: "DYMO Symbols", monospace;
   color: ${colors.DISPLAY_WHITE};
 `;
