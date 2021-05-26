@@ -1,9 +1,9 @@
 import { createGlobalStyle } from "styled-components";
-import HoneywellMCDU from "../fonts/HoneywellMCDU.ttf";
+import DymoSymbols from "../fonts/DYMO Symbols.ttf";
 
 export const GlobalStyles = createGlobalStyle`
   @font-face {
-     font-family: 'Honeywell MCDU';
-     src: url(${HoneywellMCDU});
+     font-family: 'DYMO Symbols';
+     src: url(${DymoSymbols});
   }
 `;

@@ -5,9 +5,9 @@ import PPI from "./views/ppi";
 import ENG from "./views/eng";
 import CFG from "./views/cfg";
 import { MFDContainer } from "./styles";
-import { GlobalStyles } from "../../../globals/global-styles";
 
 export enum EMFDViews {
+  OFF,
   PFD,
   ND,
   PPI,
@@ -15,14 +15,46 @@ export enum EMFDViews {
   CFG
 }
 
+export enum EDisplayModes {
+  DAY = "DAY",
+  NIGHT = "NIGHT",
+  OFF = "OFF"
+}
+
 export type MFDProps = {
   displayView: EMFDViews;
+  displayMode: EDisplayModes;
+  brightness: number;
+  contrast: number;
+  ailerons: number;
+  aileronTrim: number;
+  flaps: number;
+  spoilers: number;
+  elevators: number;
+  stabiliserTrim: number;
+  rudder: number;
+  rudderTrim: number;
+  slats: number;
 };
 
-export const MFD: React.FC<MFDProps> = ({ displayView }) => {
-  console.log(displayView);
-
+export const MFD: React.FC<MFDProps> = ({
+  displayView = EMFDViews.CFG,
+  displayMode = EDisplayModes.OFF,
+  brightness = 0,
+  contrast = 0,
+  ailerons,
+  aileronTrim,
+  flaps,
+  spoilers,
+  elevators,
+  stabiliserTrim,
+  rudder,
+  rudderTrim,
+  slats
+}) => {
   const currentView = () => {
+    console.log("--->", displayMode);
+    if (displayMode === EDisplayModes.OFF) return <></>;
     switch (displayView) {
       case EMFDViews.PFD:
         return <PFD />;
@@ -33,11 +65,31 @@ export const MFD: React.FC<MFDProps> = ({ displayView }) => {
       case EMFDViews.ENG:
         return <ENG />;
       case EMFDViews.CFG:
-        return <CFG />;
+        return (
+          <CFG
+            ailerons={ailerons}
+            flaps={flaps}
+            spoilers={spoilers}
+            elevators={elevators}
+            rudder={rudder}
+            rudderTrim={rudderTrim}
+            stabiliserTrim={stabiliserTrim}
+            aileronTrim={aileronTrim}
+            slats={slats}
+          />
+        );
     }
   };
 
-  return <MFDContainer>{currentView()}</MFDContainer>;
+  return (
+    <MFDContainer
+      displayMode={displayMode}
+      brightness={brightness}
+      contrast={contrast}
+    >
+      {currentView()}
+    </MFDContainer>
+  );
 };
 
 export default MFD;

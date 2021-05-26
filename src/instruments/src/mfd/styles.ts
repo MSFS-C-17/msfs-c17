@@ -1,10 +1,12 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { colors } from "../../../globals/colours";
 
 export const MFDContainer = styled.div`
   background-color: ${colors.DISPLAY_BLACK};
+  filter: ${({ brightness, contrast }) =>
+    css`brightness(${brightness}%) contrast(${contrast}%)`};
   height: 800px;
   width: 800px;
-  font-family: "Honeywell MCDU";
+  font-family: "DYMO Symbols";
   color: ${colors.DISPLAY_WHITE};
 `;
