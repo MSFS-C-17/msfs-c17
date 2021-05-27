@@ -5,6 +5,7 @@ import PPI from "./views/ppi";
 import ENG from "./views/eng";
 import CFG from "./views/cfg";
 import { MFDContainer } from "./styles";
+import { GlobalStyles } from "../../../globals/global-styles";
 
 export enum EMFDViews {
   OFF,
@@ -81,13 +82,13 @@ export const MFD: React.FC<MFDProps> = ({
   };
 
   return (
-    <MFDContainer
-      displayMode={displayMode}
-      brightness={brightness}
-      contrast={contrast}
-    >
-      {currentView()}
-    </MFDContainer>
+      <MFDContainer
+        displayMode={displayMode}
+        brightness={brightness}
+        contrast={contrast}
+      >
+        {currentView()}
+      </MFDContainer>
   );
 };
 

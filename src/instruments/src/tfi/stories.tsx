@@ -17,7 +17,7 @@ export default {
     },
     fuelAmount: {
       defaultValue: 100,
-      control: { type: "range", min: 0, max: 100000, step: 100 }
+      control: { type: "range", min: 0, max: 181054, step: 1 }
     }
   }
 };

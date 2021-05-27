@@ -1,5 +1,5 @@
 import React from "react";
-import { TFIContainer } from "./styles";
+import { TFIContainer, DigitsOn, DigitsOff } from "./styles";
 
 export type TTFIProps = {
   displayMode: EDisplayModes;
@@ -12,8 +12,16 @@ enum EDisplayModes {
 }
 
 export const TFI: React.FC<TTFIProps> = ({ displayMode, fuelAmount = 0 }) => {
-  if (displayMode === EDisplayModes.OFF) return <></>;
-  return <TFIContainer>{fuelAmount}</TFIContainer>;
+  return (
+    <TFIContainer>
+      {displayMode === EDisplayModes.ON && (
+        <>
+          <DigitsOn>{fuelAmount}</DigitsOn>
+          <DigitsOff>000000</DigitsOff>
+        </>
+      )}
+    </TFIContainer>
+  );
 };
 
 export default TFI;
