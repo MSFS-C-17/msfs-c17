@@ -1,6 +1,6 @@
 import React from "react";
 import { colors } from "../../../../../../globals/colours";
-import { SVGRect, SVGText } from "../styles";
+import { SVGRect, SVGText } from "../../../styles";
 
 export enum ELandingGearStowState {
   UP,

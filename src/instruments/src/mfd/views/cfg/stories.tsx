@@ -1,27 +1,10 @@
 import React, { useState } from "react";
-import { MFD, EDisplayModes, EMFDViews } from "./index";
+import CFG from "./index";
 
 export default {
-  title: "Displays/MFD",
-  component: MFD,
+  title: "Displays/MFD/CFG",
+  component: CFG,
   argTypes: {
-    displayView: {
-      options: Object.keys(EMFDViews),
-      mapping: EMFDViews,
-      control: { type: "select" }
-    },
-    displayMode: {
-      options: Object.keys(EDisplayModes),
-      control: { type: "select" }
-    },
-    brightness: {
-      defaultValue: 100,
-      control: { type: "range", min: 0, max: 100, step: 1 }
-    },
-    contrast: {
-      defaultValue: 100,
-      control: { type: "range", min: 0, max: 100, step: 1 }
-    },
     ailerons: {
       defaultValue: 0,
       control: { type: "range", min: -100, max: 100, step: 1 }
@@ -61,8 +44,8 @@ export default {
   }
 };
 
-export const _MFD = (args) => (
-  <>
-    <MFD {...args} />
-  </>
+export const _CFG = (args) => (
+  <div style={{ backgroundColor: "black" }}>
+    <CFG {...args} />
+  </div>
 );

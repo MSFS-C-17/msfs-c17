@@ -1,5 +1,5 @@
 import React from "react";
-import { SVGPath, SVGPolygon, SVGText } from "../styles";
+import { SVGPath, SVGPolygon, SVGText } from "../../../styles";
 import { colors } from "../../../../../../globals/colours";
 import { number } from "prop-types";
 

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import TFI from "./index";
+import { TFI } from "./index";
 
 enum EDisplayModes {
   OFF,
@@ -7,7 +7,7 @@ enum EDisplayModes {
 }
 
 export default {
-  title: "Total Fuel Indicator",
+  title: "LCDS/Total Fuel Indicator",
   component: TFI,
   argTypes: {
     displayMode: {
@@ -22,7 +22,7 @@ export default {
   }
 };
 
-export const _TFI = (args) => (
+export const _TotalFuelIndicator = (args) => (
   <>
     <TFI {...args} />
   </>

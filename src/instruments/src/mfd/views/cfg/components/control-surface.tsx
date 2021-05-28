@@ -1,5 +1,5 @@
 import React from "react";
-import { SVGRect } from "../styles";
+import { SVGRect } from "../../../styles";
 import { colors } from "../../../../../../globals/colours";
 
 export enum EControlSurfaceDirections {

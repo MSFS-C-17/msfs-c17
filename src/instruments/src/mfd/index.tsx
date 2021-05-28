@@ -82,14 +82,12 @@ export const MFD: React.FC<MFDProps> = ({
   };
 
   return (
-      <MFDContainer
-        displayMode={displayMode}
-        brightness={brightness}
-        contrast={contrast}
-      >
-        {currentView()}
-      </MFDContainer>
+    <MFDContainer
+      displayMode={displayMode}
+      brightness={brightness}
+      contrast={contrast}
+    >
+      {currentView()}
+    </MFDContainer>
   );
 };
-
-export default MFD;

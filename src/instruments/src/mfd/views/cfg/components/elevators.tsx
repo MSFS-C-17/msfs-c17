@@ -1,5 +1,5 @@
 import React from "react";
-import { SVGPolygon } from "../styles";
+import { SVGPolygon } from "../../../styles";
 import { colors } from "../../../../../../globals/colours";
 import { ControlSurface, EControlSurfaceDirections } from "./control-surface";
 

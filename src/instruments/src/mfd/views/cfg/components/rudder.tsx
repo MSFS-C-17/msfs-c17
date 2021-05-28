@@ -1,6 +1,6 @@
 import React from "react";
 import { ControlSurface, EControlSurfaceDirections } from "./control-surface";
-import { SVGPolygon } from "../styles";
+import { SVGPolygon } from "../../../styles";
 import { colors } from "../../../../../../globals/colours";
 
 export type TRudderProps = {

@@ -6,12 +6,14 @@ export type TTFIProps = {
   fuelAmount: number;
 };
 
-enum EDisplayModes {
+export enum EDisplayModes {
   OFF = "OFF",
   ON = "ON"
 }
 
 export const TFI: React.FC<TTFIProps> = ({ displayMode, fuelAmount = 0 }) => {
+  console.log("render");
+
   return (
     <TFIContainer>
       {displayMode === EDisplayModes.ON && (
@@ -23,5 +25,3 @@ export const TFI: React.FC<TTFIProps> = ({ displayMode, fuelAmount = 0 }) => {
     </TFIContainer>
   );
 };
-
-export default TFI;

@@ -1,7 +1,7 @@
 import React from "react";
 import { colors } from "../../../../../../globals/colours";
 import { ControlSurface, EControlSurfaceDirections } from "./control-surface";
-import { SVGPolygon } from "../styles";
+import { SVGPolygon } from "../../../styles";
 
 export type TSpoilersProps = {
   scaleValue: number;

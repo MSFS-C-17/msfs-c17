@@ -7,7 +7,7 @@ enum EDisplayModes {
 }
 
 export default {
-  title: "Tank Quantity Indicator",
+  title: "LCDS/Tank Quantity Indicator",
   component: TQI,
   argTypes: {
     displayMode: {
@@ -22,7 +22,7 @@ export default {
   }
 };
 
-export const _TQI = (args) => (
+export const _TankQuantityIndicator = (args) => (
   <>
     <TQI {...args} />
   </>

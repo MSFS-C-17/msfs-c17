@@ -1,5 +1,5 @@
 import React from "react";
-import { SVGPolygon, SVGText, SVGPath } from "../styles";
+import { SVGPolygon, SVGText, SVGPath } from "../../../styles";
 import { colors } from "../../../../../../globals/colours";
 
 export type TStabliserTrimProps = {

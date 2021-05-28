@@ -12,7 +12,7 @@ import { Elevators } from "./components/elevators";
 import { Rudder } from "./components/rudder";
 import { Slats } from "./components/slats";
 
-import { SVGPath, SVGText } from "./styles";
+import { SVGPath, SVGText } from "../../styles";
 
 export type CFGProps = {
   ailerons: number;
