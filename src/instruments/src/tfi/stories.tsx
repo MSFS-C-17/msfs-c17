@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { TFI } from "./index";
+import { TFI } from "./tfi";
 
 enum EDisplayModes {
   OFF,

@@ -26,7 +26,6 @@ export const ENG: React.FC<ENGProps> = ({
   engine4Rating,
   engine4ReverserStatus
 }) => {
-  console.log("**", engine1Rating);
   return (
     <ENGView>
       ENG

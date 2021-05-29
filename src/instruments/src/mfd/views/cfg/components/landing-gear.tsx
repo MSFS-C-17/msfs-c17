@@ -2,33 +2,27 @@ import React from "react";
 import { colors } from "../../../../../../globals/colours";
 import { SVGRect, SVGText } from "../../../styles";
 
-export enum ELandingGearStowState {
-  UP,
-  TRANSIT,
-  DOWN
-}
-
 export type TLandingGearProps = {
-  state: ELandingGearStowState;
-  brakeTemp: number;
+  gearPosition: number;
+  brakeTemperature: number;
 };
 
 export const LandingGear: React.FC<TLandingGearProps> = ({
-  state,
-  brakeTemp = 0
+  gearPosition,
+  brakeTemperature = 0
 }) => {
-  const gearStateColor = () => {
-    switch (state) {
-      case ELandingGearStowState.UP:
+  const gearPositionColor = () => {
+    switch (gearPosition) {
+      case 1:
         return "transparent";
-      case ELandingGearStowState.TRANSIT:
+      case 0:
         return colors.DISPLAY_RED;
-      case ELandingGearStowState.DOWN:
+      case 2:
         return colors.DISPLAY_GREEN;
     }
   };
 
-  const brakeTempColor = (temp) => {
+  const brakeTemperatureColor = (temp) => {
     const floorTemp = Math.floor(temp);
 
     if (floorTemp < 651) {
@@ -50,35 +44,35 @@ export const LandingGear: React.FC<TLandingGearProps> = ({
           GEAR
         </SVGText>
         <SVGRect
-          color={gearStateColor}
+          color={gearPositionColor}
           x="356.33"
           y="640.47"
           width="31.63"
           height="44.23"
         />
         <SVGRect
-          color={gearStateColor}
+          color={gearPositionColor}
           x="408.78"
           y="640.47"
           width="31.63"
           height="44.23"
         />
         <SVGRect
-          color={gearStateColor}
+          color={gearPositionColor}
           x="408.78"
           y="703.08"
           width="31.63"
           height="44.23"
         />
         <SVGRect
-          color={gearStateColor}
+          color={gearPositionColor}
           x="356.33"
           y="703.08"
           width="31.63"
           height="44.23"
         />
         <SVGRect
-          color={gearStateColor}
+          color={gearPositionColor}
           x="386.15"
           y="597.66"
           width="23.78"
@@ -95,57 +89,57 @@ export const LandingGear: React.FC<TLandingGearProps> = ({
         </SVGText>
         <SVGText
           id="router-outer-temp"
-          color={brakeTempColor(brakeTemp)}
+          color={brakeTemperatureColor(brakeTemperature)}
           textAlign="right"
           transform="matrix(1 0 0 1 137.6413 734.0209)"
           className="st2 st3 st6 st5"
         >
-          {Math.floor(brakeTemp)}
+          {Math.floor(brakeTemperature)}
         </SVGText>
         <SVGText
           id="front-inner-temp"
-          color={brakeTempColor(brakeTemp)}
+          color={brakeTemperatureColor(brakeTemperature)}
           textAlign="right"
           transform="matrix(1 0 0 1 297.4907 672.4281)"
           className="st2 st3 st6 st5"
         >
-          {Math.floor(brakeTemp)}
+          {Math.floor(brakeTemperature)}
         </SVGText>
         <SVGText
           id="front-center-temp"
-          color={brakeTempColor(brakeTemp)}
+          color={brakeTemperatureColor(brakeTemperature)}
           textAlign="right"
           transform="matrix(1 0 0 1 217.5302 672.4281)"
           className="st2 st3 st6 st5"
         >
-          {Math.floor(brakeTemp)}
+          {Math.floor(brakeTemperature)}
         </SVGText>
         <SVGText
           id="front-outer-temp"
-          color={brakeTempColor(brakeTemp)}
+          color={brakeTemperatureColor(brakeTemperature)}
           textAlign="right"
           transform="matrix(1 0 0 1 137.6413 672.4282)"
           className="st2 st3 st6 st5"
         >
-          {Math.floor(brakeTemp)}
+          {Math.floor(brakeTemperature)}
         </SVGText>
         <SVGText
           id="rear-center-temp"
-          color={brakeTempColor(brakeTemp)}
+          color={brakeTemperatureColor(brakeTemperature)}
           textAlign="right"
           transform="matrix(1 0 0 1 217.53 734.0206)"
           className="st2 st3 st6 st5"
         >
-          {Math.floor(brakeTemp)}
+          {Math.floor(brakeTemperature)}
         </SVGText>
         <SVGText
           id="rear-inner-temp"
-          color={brakeTempColor(brakeTemp)}
+          color={brakeTemperatureColor(brakeTemperature)}
           textAlign="right"
           transform="matrix(1 0 0 1 297.4907 734.0206)"
           className="st2 st3 st6 st5"
         >
-          {Math.floor(brakeTemp)}
+          {Math.floor(brakeTemperature)}
         </SVGText>
       </g>
 
@@ -157,52 +151,52 @@ export const LandingGear: React.FC<TLandingGearProps> = ({
           BRAKE TEMP °C
         </SVGText>
         <SVGText
-          color={brakeTempColor(brakeTemp)}
+          color={brakeTemperatureColor(brakeTemperature)}
           textAlign="right"
           transform="matrix(1 0 0 1 457.6873 672.4279)"
           className="st2 st3 st6 st5"
         >
-          {Math.floor(brakeTemp)}
+          {Math.floor(brakeTemperature)}
         </SVGText>
         <SVGText
-          color={brakeTempColor(brakeTemp)}
+          color={brakeTemperatureColor(brakeTemperature)}
           textAlign="right"
           transform="matrix(1 0 0 1 457.6872 734.0204)"
           className="st2 st3 st6 st5"
         >
-          {Math.floor(brakeTemp)}
+          {Math.floor(brakeTemperature)}
         </SVGText>
         <SVGText
-          color={brakeTempColor(brakeTemp)}
+          color={brakeTemperatureColor(brakeTemperature)}
           textAlign="right"
           transform="matrix(1 0 0 1 540.8715 734.0209)"
           className="st2 st3 st6 st5"
         >
-          {Math.floor(brakeTemp)}
+          {Math.floor(brakeTemperature)}
         </SVGText>
         <SVGText
-          color={brakeTempColor(brakeTemp)}
+          color={brakeTemperatureColor(brakeTemperature)}
           textAlign="right"
           transform="matrix(1 0 0 1 540.8712 672.4277)"
           className="st2 st3 st6 st5"
         >
-          {Math.floor(brakeTemp)}
+          {Math.floor(brakeTemperature)}
         </SVGText>
         <SVGText
-          color={brakeTempColor(brakeTemp)}
+          color={brakeTemperatureColor(brakeTemperature)}
           textAlign="right"
           transform="matrix(1 0 0 1 622.156 672.4285)"
           className="st2 st3 st6 st5"
         >
-          {Math.floor(brakeTemp)}
+          {Math.floor(brakeTemperature)}
         </SVGText>
         <SVGText
-          color={brakeTempColor(brakeTemp)}
+          color={brakeTemperatureColor(brakeTemperature)}
           textAlign="right"
           transform="matrix(1 0 0 1 622.1562 734.0209)"
           className="st2 st3 st6 st5"
         >
-          {Math.floor(brakeTemp)}
+          {Math.floor(brakeTemperature)}
         </SVGText>
       </g>
     </>

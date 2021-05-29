@@ -5,8 +5,8 @@ export const MFDContainer = styled.div`
   background-color: ${colors.DISPLAY_BLACK};
   filter: ${({ brightness, contrast }) =>
     css`brightness(${brightness}%) contrast(${contrast}%)`};
-  height: 800px;
-  width: 800px;
+  height: 1280px;
+  width: 1280px;
   font-family: "DYMO Symbols A", monospace;
   color: ${colors.DISPLAY_WHITE};
 `;

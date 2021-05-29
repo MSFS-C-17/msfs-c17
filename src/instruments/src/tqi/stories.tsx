@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import TQI from "./index";
+import TQI from "./tqi";
 
 enum EDisplayModes {
   OFF,

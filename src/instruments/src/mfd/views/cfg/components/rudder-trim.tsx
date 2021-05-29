@@ -1,20 +1,20 @@
 import React from "react";
 import { SVGPath, SVGPolygon, SVGText } from "../../../styles";
 import { colors } from "../../../../../../globals/colours";
-import { number } from "prop-types";
 
 export type TRudderTrimProps = {
-  scaleValue: number;
+  rudderTrim: number;
 };
 
-export const RudderTrim: React.FC<TRudderTrimProps> = ({ scaleValue }) => {
+export const RudderTrim: React.FC<TRudderTrimProps> = ({ rudderTrim = 0 }) => {
   const limitsFromZero = 47;
-  const indicatorPosition = (limitsFromZero / 100) * scaleValue;
+
+  const rudderTrimDegrees = rudderTrim * (180 / Math.PI);
+
+  let indicatorPosition = (limitsFromZero / 10) * rudderTrimDegrees;
 
   return (
     <g id="rudder-trim">
-
-
       <SVGText
         color={colors.DISPLAY_WHITE}
         transform="matrix(1 0 0 1 337.2571 79.6353)"

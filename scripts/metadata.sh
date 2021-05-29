@@ -19,6 +19,8 @@ if [ -z "${GITHUB_SHA}" ]; then
 fi
 GITHUB_BUILT="$(date -u -Iseconds)"
 
+echo $DIR
+
 jq -n \
     --arg built "${GITHUB_BUILT}" \
     --arg ref "${GITHUB_REF##*/}" \
@@ -26,4 +28,4 @@ jq -n \
     --arg actor "${GITHUB_ACTOR}" \
     --arg event_name "${GITHUB_EVENT_NAME}" \
     '{ built: $built, ref: $ref, sha: $sha, actor: $actor, event_name: $event_name }' \
-    > "${DIR}/../MSFS C-17/build_info.json"
+    > "${DIR}/../MSFS C-17 Instruments/build_info.json"

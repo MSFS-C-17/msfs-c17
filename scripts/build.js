@@ -18,15 +18,15 @@ function* readdir(d) {
 }
 
 const MS_FILETIME_EPOCH = 116444736000000000n;
-const C17 = path.resolve(__dirname, "..", "MSFS C-17");
+const C17A = path.resolve(__dirname, "..", "MSFS C-17 Instruments");
 
 const contentEntries = [];
 let totalPackageSize = 0;
 
-for (const filename of readdir(C17)) {
+for (const filename of readdir(C17A)) {
   const stat = fs.statSync(filename, { bigint: true });
   contentEntries.push({
-    path: path.relative(C17, filename.replace(path.sep, "/")),
+    path: path.relative(C17A, filename.replace(path.sep, "/")),
     size: Number(stat.size),
     date: Number(stat.mtimeNs / 100n + MS_FILETIME_EPOCH)
   });
@@ -34,7 +34,7 @@ for (const filename of readdir(C17)) {
 }
 
 fs.writeFileSync(
-  path.join(C17, "layout.json"),
+  path.join(C17A, "layout.json"),
   JSON.stringify(
     {
       content: contentEntries
@@ -45,7 +45,7 @@ fs.writeFileSync(
 );
 
 fs.writeFileSync(
-  path.join(C17, "manifest.json"),
+  path.join(C17A, "manifest.json"),
   JSON.stringify(
     {
       ...require("../manifest-base.json"),

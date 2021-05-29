@@ -4,7 +4,7 @@ import { EReverserStatus } from "./components/reverser-status";
 import { EDisplayModes } from "../../index";
 
 export default {
-  title: "Displays/MFD/ENG",
+  title: "Displays/Index/ENG",
   component: ENG,
   argTypes: {
     engine1Rating: {

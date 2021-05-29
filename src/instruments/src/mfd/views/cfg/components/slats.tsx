@@ -14,7 +14,7 @@ type TSlatProps = {
 };
 
 const SlatIndicator: React.FC<TSlatProps> = ({ x, y, scaleValue }) => {
-  if (scaleValue === 100) {
+  if (scaleValue === 1) {
     return (
       <SVGPath
         transform={`translate(${x}, ${y})`}
@@ -22,7 +22,7 @@ const SlatIndicator: React.FC<TSlatProps> = ({ x, y, scaleValue }) => {
         color={colors.DISPLAY_GREEN}
       />
     );
-  } else if (scaleValue < 100 && scaleValue > 0) {
+  } else if (scaleValue < 1 && scaleValue > 0) {
     return (
       <SVGPath
         transform={`translate(${x}, ${y})`}

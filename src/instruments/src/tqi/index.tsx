@@ -1,27 +1,5 @@
 import React from "react";
-import { TQIContainer, DigitsOn, DigitsOff } from "./styles";
+import { EDisplayModes, TQI } from "./tqi";
+import { render } from "@instruments/common/index";
 
-export type TQIProps = {
-  displayMode: EDisplayModes;
-  fuelAmount: number;
-};
-
-enum EDisplayModes {
-  OFF = "OFF",
-  ON = "ON"
-}
-
-export const TQI: React.FC<TQIProps> = ({ displayMode, fuelAmount = 0 }) => {
-  return (
-    <TQIContainer>
-      {displayMode === EDisplayModes.ON && (
-        <>
-          <DigitsOn>{fuelAmount}</DigitsOn>
-          <DigitsOff>00000</DigitsOff>
-        </>
-      )}
-    </TQIContainer>
-  );
-};
-
-export default TQI;
+render(<TQI displayMode={EDisplayModes.ON} fuelAmount={100} />);

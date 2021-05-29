@@ -1,93 +1,70 @@
 import React from "react";
-import PFD from "./views/pfd";
-import ND from "./views/nd";
-import PPI from "./views/ppi";
-import ENG from "./views/eng";
-import CFG from "./views/cfg";
-import { MFDContainer } from "./styles";
-import { GlobalStyles } from "../../../globals/global-styles";
+import { render } from "@instruments/common/index";
+import { EDisplayModes, EMFDViews, MFD, TMFDProps } from "./mfd";
+import { useSimVar } from "@instruments/common/simVars";
+import { TCFGProps } from "./views/cfg";
+import { createGlobalStyle } from "styled-components";
 
-export enum EMFDViews {
-  OFF,
-  PFD,
-  ND,
-  PPI,
-  ENG,
-  CFG
-}
+const Panel: React.FC = () => {
+  const [rightFlapsPosition] = useSimVar(
+    "TRAILING EDGE FLAPS RIGHT PERCENT",
+    "Number"
+  );
 
-export enum EDisplayModes {
-  DAY = "DAY",
-  NIGHT = "NIGHT",
-  OFF = "OFF"
-}
+  const [leftFlapsPosition] = useSimVar(
+    "TRAILING EDGE FLAPS LEFT PERCENT",
+    "Number"
+  );
 
-export type MFDProps = {
-  displayView: EMFDViews;
-  displayMode: EDisplayModes;
-  brightness: number;
-  contrast: number;
-  ailerons: number;
-  aileronTrim: number;
-  flaps: number;
-  spoilers: number;
-  elevators: number;
-  stabiliserTrim: number;
-  rudder: number;
-  rudderTrim: number;
-  slats: number;
-};
+  const [rudderPosition] = useSimVar("RUDDER POSITION", "Number");
+  const [elevatorPosition] = useSimVar("ELEVATOR POSITION", "Number");
+  const [aileronPosition] = useSimVar("AILERON POSITION", "Number");
+  const [leftSpoilerPosition] = useSimVar("SPOILERS LEFT POSITION", "Number");
+  const [rightSpoilerPosition] = useSimVar("SPOILERS RIGHT POSITION", "Number");
+  const [leftSlatsPosition] = useSimVar(
+    "LEADING EDGE FLAPS LEFT PERCENT",
+    "Number"
+  );
+  const [rightSlatsPosition] = useSimVar(
+    "LEADING EDGE FLAPS RIGHT PERCENT",
+    "Number"
+  );
+  const [rudderTrim] = useSimVar("RUDDER TRIM", "Number");
+  const [stabiliserTrim] = useSimVar("ELEVATOR TRIM POSITION", "Number");
+  const [aileronTrim] = useSimVar("AILERON TRIM", "Number");
+  const [leftFlapIndex] = useSimVar("TRAILING EDGE FLAPS LEFT INDEX", "Number");
+  const [rightFlapIndex] = useSimVar(
+    "TRAILING EDGE FLAPS RIGHT INDEX",
+    "Number"
+  );
+  const [gearPosition] = useSimVar("GEAR POSITION", "Number");
 
-export const MFD: React.FC<MFDProps> = ({
-  displayView = EMFDViews.CFG,
-  displayMode = EDisplayModes.OFF,
-  brightness = 0,
-  contrast = 0,
-  ailerons,
-  aileronTrim,
-  flaps,
-  spoilers,
-  elevators,
-  stabiliserTrim,
-  rudder,
-  rudderTrim,
-  slats
-}) => {
-  const currentView = () => {
-    if (displayMode === EDisplayModes.OFF) return <></>;
-    switch (displayView) {
-      case EMFDViews.PFD:
-        return <PFD />;
-      case EMFDViews.ND:
-        return <ND />;
-      case EMFDViews.PPI:
-        return <PPI />;
-      case EMFDViews.ENG:
-        return <ENG />;
-      case EMFDViews.CFG:
-        return (
-          <CFG
-            ailerons={ailerons}
-            flaps={flaps}
-            spoilers={spoilers}
-            elevators={elevators}
-            rudder={rudder}
-            rudderTrim={rudderTrim}
-            stabiliserTrim={stabiliserTrim}
-            aileronTrim={aileronTrim}
-            slats={slats}
-          />
-        );
-    }
+  const cfgValues: TCFGProps = {
+    flapPosition: Math.max(leftFlapsPosition, rightFlapsPosition),
+    aileronPosition,
+    elevatorPosition,
+    rudderPosition,
+    spoilerPosition: Math.max(leftSpoilerPosition, rightSpoilerPosition),
+    slatPosition: Math.max(leftSlatsPosition, rightSlatsPosition),
+    flapIndex: Math.max(leftFlapIndex, rightFlapIndex),
+    rudderTrim,
+    stabiliserTrim,
+    aileronTrim,
+    gearPosition,
+    brakeTemperature: 0
   };
 
-  return (
-    <MFDContainer
-      displayMode={displayMode}
-      brightness={brightness}
-      contrast={contrast}
-    >
-      {currentView()}
-    </MFDContainer>
-  );
+  console.log({ s: stabiliserTrim, a: aileronTrim, r: rudderTrim });
+
+  const mfdProps: TMFDProps = {
+    displayMode: EDisplayModes.DAY,
+    displayView: EMFDViews.CFG,
+    brightness: 100,
+    contrast: 100,
+    cfgValues: cfgValues
+  };
+
+  return <MFD {...mfdProps} />;
 };
+
+render(<Panel />);

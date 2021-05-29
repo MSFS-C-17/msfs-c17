@@ -20,24 +20,25 @@ type TControlSurfaceProps = {
 
 export const ControlSurface: React.FC<TControlSurfaceProps> = (props) => {
   const { x, y, width, height, direction, scaleValue } = props;
+  const absScaleValue = Math.abs(scaleValue);
   let args = { x, y, width, height };
   switch (direction) {
     case EControlSurfaceDirections.UP: {
-      args.height = (height / 100) * Math.abs(scaleValue);
+      args.height = height * absScaleValue;
       args.y = y + (height - args.height);
       break;
     }
     case EControlSurfaceDirections.DOWN: {
-      args.height = (height / 100) * Math.abs(scaleValue);
+      args.height = height * absScaleValue;
       break;
     }
     case EControlSurfaceDirections.LEFT: {
-      args.width = (width / 100) * Math.abs(scaleValue);
+      args.width = width * absScaleValue;
       args.x = x + (width - args.width);
       break;
     }
     case EControlSurfaceDirections.RIGHT: {
-      args.width = (width / 100) * Math.abs(scaleValue);
+      args.width = width * absScaleValue;
       break;
     }
   }

@@ -3,18 +3,22 @@ import { SVGPolygon, SVGText, SVGPath } from "../../../styles";
 import { colors } from "../../../../../../globals/colours";
 
 export type TStabliserTrimProps = {
-  scaleValue: number;
+  stabiliserTrim: number;
 };
 
 export const StabiliserTrim: React.FC<TStabliserTrimProps> = ({
-  scaleValue
+  stabiliserTrim
 }) => {
   const positiveLimitFromZero = 70;
   const negativeLimitFromZero = 23;
 
-  const indicatorPosition = (() => {
-    if (scaleValue > 0) return (positiveLimitFromZero / 100) * -scaleValue;
-    else if (scaleValue < 0) return (negativeLimitFromZero / 100) * -scaleValue;
+  const stabiliserTrimDegrees = stabiliserTrim * (180 / Math.PI);
+
+  let indicatorPosition = (() => {
+    if (stabiliserTrim > 0)
+      return (positiveLimitFromZero / 15) * -stabiliserTrimDegrees;
+    else if (stabiliserTrim < 0)
+      return (negativeLimitFromZero / 5) * -stabiliserTrimDegrees;
     else return 0;
   })();
 

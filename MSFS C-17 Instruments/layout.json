@@ -1,0 +1,49 @@
+{
+  "content": [
+    {
+      "path": "build_info.json",
+      "size": 142,
+      "date": 132667887374646300
+    },
+    {
+      "path": "html_ui/Pages/VCockpit/Instruments/C17A/mfd/template.html",
+      "size": 338597,
+      "date": 132667899328910190
+    },
+    {
+      "path": "html_ui/Pages/VCockpit/Instruments/C17A/mfd/template.js",
+      "size": 1697,
+      "date": 132667899328955120
+    },
+    {
+      "path": "html_ui/Pages/VCockpit/Instruments/C17A/test/template.html",
+      "size": 216946,
+      "date": 132667899271387460
+    },
+    {
+      "path": "html_ui/Pages/VCockpit/Instruments/C17A/test/template.js",
+      "size": 1703,
+      "date": 132667899271433380
+    },
+    {
+      "path": "html_ui/Pages/VCockpit/Instruments/C17A/tfi/template.html",
+      "size": 270114,
+      "date": 132667899292799660
+    },
+    {
+      "path": "html_ui/Pages/VCockpit/Instruments/C17A/tfi/template.js",
+      "size": 1697,
+      "date": 132667899293247250
+    },
+    {
+      "path": "html_ui/Pages/VCockpit/Instruments/C17A/tqi/template.html",
+      "size": 270071,
+      "date": 132667899313259040
+    },
+    {
+      "path": "html_ui/Pages/VCockpit/Instruments/C17A/tqi/template.js",
+      "size": 1697,
+      "date": 132667899313339310
+    }
+  ]
+}

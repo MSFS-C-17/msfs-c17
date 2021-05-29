@@ -4,7 +4,7 @@ import { CFGView } from "./styles";
 import { RudderTrim } from "./components/rudder-trim";
 import { AileronTrim } from "./components/aileron-trim";
 import { StabiliserTrim } from "./components/stabiliser-trim";
-import { ELandingGearStowState, LandingGear } from "./components/landing-gear";
+import { LandingGear } from "./components/landing-gear";
 import { Ailerons } from "./components/ailerons";
 import { Flaps } from "./components/flaps";
 import { Spoilers } from "./components/spoilers";
@@ -14,36 +14,42 @@ import { Slats } from "./components/slats";
 
 import { SVGPath, SVGText } from "../../styles";
 
-export type CFGProps = {
-  ailerons: number;
+export type TCFGProps = {
+  aileronPosition: number;
   aileronTrim: number;
-  flaps: number;
-  spoilers: number;
-  elevators: number;
+  flapPosition: number;
+  flapIndex: number;
+  spoilerPosition: number;
+  elevatorPosition: number;
   stabiliserTrim: number;
-  rudder: number;
+  rudderPosition: number;
   rudderTrim: number;
-  slats: number;
+  slatPosition: number;
+  gearPosition: number;
+  brakeTemperature: number;
 };
 
-export const CFG: React.FC<CFGProps> = ({
-  ailerons,
+export const CFG: React.FC<TCFGProps> = ({
+  aileronPosition,
   aileronTrim,
-  flaps,
-  spoilers,
-  elevators,
+  flapPosition,
+  flapIndex,
+  spoilerPosition,
+  elevatorPosition,
   stabiliserTrim,
-  rudder,
+  rudderPosition,
   rudderTrim,
-  slats
+  slatPosition,
+  gearPosition,
+  brakeTemperature
 }) => {
-  const flapPosition = (() => {
+  const flapPositionText = (() => {
     switch (true) {
-      case flaps === 100:
+      case flapPosition === 100:
         return "FULL";
-      case flaps >= 75:
+      case flapPosition >= 75:
         return "3/4";
-      case flaps >= 50:
+      case flapPosition >= 50:
         return "1/2";
       default:
         return "UP";
@@ -70,26 +76,29 @@ export const CFG: React.FC<CFGProps> = ({
           transform="matrix(1 0 0 1 324.5364 481.6738)"
           textAlign="center"
         >
-          FLAPS {flapPosition}
+          FLAPS {flapPositionText}
         </SVGText>
         <SVGText
           color={colors.DISPLAY_WHITE}
           transform="matrix(1 0 0 1 342.8868 512.798)"
         >
-          INDEX {flaps}
+          INDEX {flapIndex}
         </SVGText>
 
-        <Ailerons scaleValue={ailerons} />
-        <AileronTrim scaleValue={aileronTrim} />
-        <Flaps scaleValue={flaps} />
+        <Ailerons scaleValue={aileronPosition} />
+        <AileronTrim aileronTrim={aileronTrim} />
+        <Flaps scaleValue={flapPosition} />
 
-        <RudderTrim scaleValue={rudderTrim} />
-        <StabiliserTrim scaleValue={stabiliserTrim} />
-        <Elevators scaleValue={elevators} />
-        <Spoilers scaleValue={spoilers} />
-        <Rudder scaleValue={rudder} />
-        <Slats scaleValue={slats} />
-        <LandingGear state={ELandingGearStowState.DOWN} brakeTemp={751} />
+        <RudderTrim rudderTrim={rudderTrim} />
+        <StabiliserTrim stabiliserTrim={stabiliserTrim} />
+        <Elevators scaleValue={elevatorPosition} />
+        <Spoilers scaleValue={spoilerPosition} />
+        <Rudder scaleValue={rudderPosition} />
+        <Slats scaleValue={slatPosition} />
+        <LandingGear
+          gearPosition={gearPosition}
+          brakeTemperature={brakeTemperature}
+        />
       </svg>
     </CFGView>
   );

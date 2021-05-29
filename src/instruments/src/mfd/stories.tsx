@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import { MFD, EDisplayModes, EMFDViews } from "./index";
+import { MFD, EDisplayModes, EMFDViews, TMFDProps } from "./mfd";
+import { TCFGProps } from "./views/cfg";
 
 export default {
-  title: "Displays/MFD",
+  title: "Displays/Index",
   component: MFD,
   argTypes: {
     displayView: {
@@ -21,48 +22,37 @@ export default {
     contrast: {
       defaultValue: 100,
       control: { type: "range", min: 0, max: 100, step: 1 }
-    },
-    ailerons: {
-      defaultValue: 0,
-      control: { type: "range", min: -100, max: 100, step: 1 }
-    },
-    aileronTrim: {
-      defaultValue: 0,
-      control: { type: "range", min: -100, max: 100, step: 1 }
-    },
-    flaps: {
-      defaultValue: 0,
-      control: { type: "range", min: 0, max: 100, step: 1 }
-    },
-    spoilers: {
-      defaultValue: 0,
-      control: { type: "range", min: 0, max: 100, step: 1 }
-    },
-    elevators: {
-      defaultValue: 0,
-      control: { type: "range", min: -100, max: 100, step: 1 }
-    },
-    stabiliserTrim: {
-      defaultValue: 0,
-      control: { type: "range", min: -100, max: 100, step: 1 }
-    },
-    rudder: {
-      defaultValue: 0,
-      control: { type: "range", min: -100, max: 100, step: 1 }
-    },
-    rudderTrim: {
-      defaultValue: 0,
-      control: { type: "range", min: -100, max: 100, step: 1 }
-    },
-    slats: {
-      defaultValue: 0,
-      control: { type: "range", min: 0, max: 100, step: 1 }
     }
   }
 };
 
-export const _MFD = (args) => (
-  <>
-    <MFD {...args} />
-  </>
-);
+export const _MFD = (args) => {
+  const cfgValues: TCFGProps = {
+    rudderPosition: 0,
+    aileronPosition: 0,
+    flapPosition: 0,
+    elevatorPosition: 0,
+    spoilerPosition: 0,
+    slatPosition: 0,
+    flapIndex: 0,
+    aileronTrim: 0,
+    rudderTrim: 0,
+    stabiliserTrim: 0,
+    gearPosition: 1,
+    brakeTemperature: 30
+  };
+
+  const mfdProps: TMFDProps = {
+    displayMode: args.displayMode,
+    displayView: args.displayView,
+    brightness: args.brightness,
+    contrast: args.contrast,
+    cfgValues: cfgValues
+  };
+
+  return (
+    <>
+      <MFD {...mfdProps} />
+    </>
+  );
+};

@@ -3,17 +3,20 @@ import { SVGPath, SVGPolygon, SVGText } from "../../../styles";
 import { colors } from "../../../../../../globals/colours";
 
 export type TAileronTrimProps = {
-  scaleValue: number;
+  aileronTrim: number;
 };
 
-export const AileronTrim: React.FC<TAileronTrimProps> = ({ scaleValue }) => {
-
+export const AileronTrim: React.FC<TAileronTrimProps> = ({ aileronTrim }) => {
   const positiveLimitFromZero = 47;
   const negativeLimitFromZero = 48;
 
-  const indicatorPosition = (() => {
-    if (scaleValue > 0) return (positiveLimitFromZero / 100) * -scaleValue;
-    else if (scaleValue < 0) return (negativeLimitFromZero / 100) * -scaleValue;
+  const aileronTrimDegrees = aileronTrim * (180 / Math.PI);
+
+  let indicatorPosition = (() => {
+    if (aileronTrim > 0)
+      return (positiveLimitFromZero / 10) * -aileronTrimDegrees;
+    else if (aileronTrim < 0)
+      return (negativeLimitFromZero / 10) * -aileronTrimDegrees;
     else return 0;
   })();
 
