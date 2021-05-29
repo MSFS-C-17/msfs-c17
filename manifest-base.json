@@ -1,0 +1,23 @@
+{
+  "creator": "MSFS C-17",
+  "release_notes": {
+    "neutral": {
+      "LastUpdate": "VERSION 0.0.1",
+      "OlderHistory": ""
+    }
+  },
+  "title": "C-17 Extended",
+  "dependencies": [
+    {
+      "package_version": "0.1.0",
+      "name": "destroyer121-c17"
+    },
+    {
+      "package_version": "0.1.66",
+      "name": "fs-base-aircraft-common"
+    }
+  ],
+  "content_type": "AIRCRAFT",
+  "minimum_game_version": "1.9.5",
+  "manufacturer": "Boeing"
+}

@@ -1,91 +1,102 @@
 "use strict";
 
-// require('dotenv').config();
+require("dotenv").config();
 
 const os = require("os");
 const fs = require("fs");
-// const image = require('@rollup/plugin-image');
+const image = require("@rollup/plugin-image");
 const { babel } = require("@rollup/plugin-babel");
 const { nodeResolve } = require("@rollup/plugin-node-resolve");
 const commonjs = require("@rollup/plugin-commonjs");
 const replace = require("@rollup/plugin-replace");
-// const postcss = require('rollup-plugin-postcss');
-// const tailwindcss = require('tailwindcss');
+// const postcss = require("rollup-plugin-postcss");
+// const tailwindcss = require("tailwindcss");
 
- // const instrumentTemplate = require("@flybywiresim/rollup-plugin-msfs");
-const instrumentTemplate = require("./instrument-template/rollup.js");
+const instrumentTemplate = require("@flybywiresim/rollup-plugin-msfs");
+// const ecamPageTemplate = require("./ecam-page-template/rollup.js");
 
 const TMPDIR = `${os.tmpdir()}/c17-instruments-gen`;
 
 const extensions = [".ts", ".tsx", ".js", ".jsx", ".mjs"];
 
-// const extraInstruments = [
-//     {
-//         name: 'door-page',
-//         path: 'SD/Pages/Door',
-//     },
-//     {
-//         name: 'cond-page',
-//         path: 'SD/Pages/Cond',
-//     },
-//     {
-//         name: 'fctl-page',
-//         path: 'SD/Pages/Fctl',
-//     },
-//     {
-//         name: 'elec-page',
-//         path: 'SD/Pages/Elec',
-//     },
-// ];
+const extraInstruments = [
+  // {
+  //   name: "door-page",
+  //   path: "SD/Pages/Door"
+  // },
+  // {
+  //   name: "cond-page",
+  //   path: "SD/Pages/Cond"
+  // },
+  // {
+  //   name: "fctl-page",
+  //   path: "SD/Pages/Fctl"
+  // },
+  // {
+  //   name: "elec-page",
+  //   path: "SD/Pages/Elec"
+  // }
+];
 
 // function makePostcssPluginList(instrumentPath) {
-//     const usesTailwind = fs.existsSync(`${__dirname}/src/${instrumentPath}/tailwind.config.js`);
+//   const usesTailwind = fs.existsSync(
+//     `${__dirname}/src/${instrumentPath}/tailwind.config.js`
+//   );
 //
-//     return [tailwindcss(usesTailwind ? `${__dirname}/src/${instrumentPath}/tailwind.config.js` : undefined)];
+//   return [
+//     tailwindcss(
+//       usesTailwind
+//         ? `${__dirname}/src/${instrumentPath}/tailwind.config.js`
+//         : undefined
+//     )
+//   ];
 // }
 
 function getInstrumentsToCompile() {
-  // const baseInstruments = fs
-  //   .readdirSync(`${__dirname}/src`, { withFileTypes: true })
-  //   .filter(
-  //     (d) =>
-  //       d.isDirectory() &&
-  //       fs.existsSync(`${__dirname}/src/${d.name}/config.json`)
-  //   );
-  //
-  return [{ path: "tfi", name: "tfi", isInstrument: true }];
-  // return [
-  //   ...baseInstruments.map(({ name }) => ({
-  //     path: name,
-  //     name,
-  //     isInstrument: true
-  //   }))
-  // ...extraInstruments.map((def) => ({ ...def, isInstrument: false })),
-  // ];
+  const baseInstruments = fs
+    .readdirSync(`${__dirname}/src`, { withFileTypes: true })
+    .filter(
+      (d) =>
+        d.isDirectory() &&
+        fs.existsSync(`${__dirname}/src/${d.name}/config.json`)
+    );
+
+  return [
+    ...baseInstruments.map(({ name }) => ({
+      path: name,
+      name: name.toUpperCase(),
+      isInstrument: true
+    })),
+    ...extraInstruments.map((def) => ({ ...def, isInstrument: false }))
+  ];
 }
 
 function getTemplatePlugin({ name, config, imports = [], isInstrument }) {
-  console.log("${__dirname}", __dirname);
-
-  return instrumentTemplate({
-    name,
-    outputDir: `${__dirname}/../../MSFS C-17/html_ui/Pages/VCockpit/Instruments/generated`
-  });
-  // if (isInstrument) {
-    // return instrumentTemplate({
-    //   name,
-    //   config,
-    //   imports,
-    //   outputDir: `${__dirname}/../../MSFS C-17/html_ui/Pages/VCockpit/Instruments/generated`
-    // });
+  if (isInstrument) {
+    return instrumentTemplate({
+      name,
+      config,
+      imports,
+      // getCssBundle() {
+      //   return fs.readFileSync(`${TMPDIR}/${name}-gen.css`).toString();
+      // },
+      outputDir: `${__dirname}/../../MSFS C-17/html_ui/Pages/VCockpit/Instruments/generated`
+    });
     // eslint-disable-next-line no-else-return
-  // }
+  } else {
+    console.log("DO NOTHING");
+    // return ecamPageTemplate({
+    //   name,
+    //   getCssBundle() {
+    //     return fs.readFileSync(`${TMPDIR}/${name}-gen.css`).toString();
+    //   },
+    //   outputDir: `${__dirname}/../../MSFS C-17/html_ui/Pages/VCockpit/Instruments/generated/EcamPages`
+    // });
+  }
 }
 
 module.exports = getInstrumentsToCompile().map(
   ({ path, name, isInstrument }) => {
-    console.log("-->", path, name, isInstrument);
-
     const config = JSON.parse(
       fs.readFileSync(`${__dirname}/src/${path}/config.json`)
     );
@@ -93,12 +104,12 @@ module.exports = getInstrumentsToCompile().map(
     return {
       input: `${__dirname}/src/${path}/${config.index}`,
       output: {
-        name,
-        file: `${TMPDIR}/${name}-gen.js`,
+        // file: `${TMPDIR}/${name}-gen.js`,
+        file: `${TMPDIR}/bundle.js`,
         format: "iife"
       },
       plugins: [
-        //         image(),
+        image(),
         nodeResolve({ extensions }),
         commonjs({ include: /node_modules/ }),
         babel({
@@ -119,17 +130,19 @@ module.exports = getInstrumentsToCompile().map(
           preventAssignment: true,
           "process.env.NODE_ENV": JSON.stringify("production"),
           "process.env.CLIENT_ID": JSON.stringify(process.env.CLIENT_ID),
-          "process.env.CLIENT_SECRET": JSON.stringify(process.env.CLIENT_SECRET)
-          // "process.env.CHARTFOX_SECRET": JSON.stringify(
-          //   process.env.CHARTFOX_SECRET
-          // ),
-          // "process.env.SIMVAR_DISABLE": "false"
+          "process.env.CLIENT_SECRET": JSON.stringify(
+            process.env.CLIENT_SECRET
+          ),
+          "process.env.CHARTFOX_SECRET": JSON.stringify(
+            process.env.CHARTFOX_SECRET
+          ),
+          "process.env.SIMVAR_DISABLE": "false"
         }),
-        //         postcss({
-        //             use: { sass: {} },
-        //             plugins: makePostcssPluginList(path),
-        //             extract: `${TMPDIR}/${name}-gen.css`,
-        //         }),
+        // postcss({
+        //   use: { sass: {} },
+        //   plugins: makePostcssPluginList(path),
+        //   extract: `${TMPDIR}/${name}-gen.css`
+        // }),
         getTemplatePlugin({
           name,
           path,

@@ -10,7 +10,8 @@
     "build:instruments": "rollup -c src/instruments/rollup.config.js",
     "watch:instruments": "rollup -wc src/instruments/rollup.config.js",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "build": "bash scripts/dev-env/run.cmd ./scripts/build.sh"
   },
   "repository": {
     "type": "git",
@@ -23,6 +24,7 @@
   },
   "homepage": "https://github.com/MSFS-C-17/msfs-c17#readme",
   "dependencies": {
+    "@flybywiresim/igniter": "^1.1.4",
     "@rollup/plugin-babel": "^5.3.0",
     "@rollup/plugin-image": "^2.0.6",
     "react": "^17.0.2",
