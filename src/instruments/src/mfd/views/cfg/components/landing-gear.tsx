@@ -13,12 +13,12 @@ export const LandingGear: React.FC<TLandingGearProps> = ({
 }) => {
   const gearPositionColor = () => {
     switch (gearPosition) {
-      case 1:
-        return "transparent";
       case 0:
-        return colors.DISPLAY_RED;
-      case 2:
+        return "transparent";
+      case 1:
         return colors.DISPLAY_GREEN;
+      case 2:
+        return colors.DISPLAY_RED;
     }
   };
 

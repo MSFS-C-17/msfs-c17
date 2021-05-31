@@ -3,7 +3,6 @@ import { render } from "@instruments/common/index";
 import { EDisplayModes, EMFDViews, MFD, TMFDProps } from "./mfd";
 import { useSimVar } from "@instruments/common/simVars";
 import { TCFGProps } from "./views/cfg";
-import { TENGProps } from "./views/eng";
 import { EngineSimVars } from "../../simVars/engines";
 
 const Panel: React.FC = () => {

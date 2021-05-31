@@ -72,7 +72,7 @@ export const MaxEGT: React.FC<TMaxEGT> = ({
         color={egtColor}
         transform="matrix(1 0 0 1 775 190)"
       >
-        {maxEGT}°C
+        {maxEGT}&deg;C
       </SVGText>
 
       <SVGText

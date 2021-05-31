@@ -8,19 +8,19 @@ export default {
   argTypes: {
     engine1N1RPM: {
       defaultValue: 0,
-      control: { type: "range", min: 0, max: 100, step: .1 }
+      control: { type: "range", min: 0, max: 100, step: 0.1 }
     },
     engine2N1RPM: {
       defaultValue: 0,
-      control: { type: "range", min: 0, max: 100, step: .1 }
+      control: { type: "range", min: 0, max: 100, step: 0.1 }
     },
     engine3N1RPM: {
       defaultValue: 0,
-      control: { type: "range", min: 0, max: 100, step: .1 }
+      control: { type: "range", min: 0, max: 100, step: 0.1 }
     },
     engine4N1RPM: {
       defaultValue: 0,
-      control: { type: "range", min: 0, max: 100, step: .1 }
+      control: { type: "range", min: 0, max: 100, step: 0.1 }
     },
     engine1ExhaustGasTemperature: {
       defaultValue: 0,
@@ -86,6 +86,22 @@ export default {
       defaultValue: 0,
       control: { type: "range", min: 0, max: 1.85, step: 0.01 }
     },
+    engine1FuelFlowPPH: {
+      defaultValue: 0,
+      control: { type: "range", min: 0, max: 10000, step: 100 }
+    },
+    engine2FuelFlowPPH: {
+      defaultValue: 0,
+      control: { type: "range", min: 0, max: 10000, step: 100 }
+    },
+    engine3FuelFlowPPH: {
+      defaultValue: 0,
+      control: { type: "range", min: 0, max: 10000, step: 100 }
+    },
+    engine4FuelFlowPPH: {
+      defaultValue: 0,
+      control: { type: "range", min: 0, max: 10000, step: 100 }
+    }
   }
 };
 

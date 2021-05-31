@@ -1,10 +1,16 @@
 import React from "react";
 import { SVGText, SVGPath } from "../../../styles";
 import { colors } from "../../../../../../globals/colours";
+import { pad } from "../../../../../utils/number-padding";
 
-export type TFuelFlowProps = { fuelFlow: number };
+export type TFuelFlowProps = { totalFuelFlow: number };
 
-export const FuelFlow: React.FC<TFuelFlowProps> = ({ fuelFlow }) => {
+export const FuelFlow: React.FC<TFuelFlowProps> = ({ totalFuelFlow }) => {
+  const decimalise = totalFuelFlow / 1000;
+  const hundredsValue =
+    Math.floor((decimalise - Math.floor(decimalise)) * 10) * 100;
+  const thousandsValue = Math.floor(decimalise);
+
   return (
     <>
       <SVGText
@@ -15,19 +21,21 @@ export const FuelFlow: React.FC<TFuelFlowProps> = ({ fuelFlow }) => {
       </SVGText>
       <SVGText
         fontSize={40}
+        letterSpacing={0}
         textAnchor="end"
         color={colors.DISPLAY_GREEN}
-        transform="matrix(1 0 0 1 393 160)"
+        transform="matrix(1 0 0 1 391 160)"
       >
-        21
+        {thousandsValue > 0 && thousandsValue}
       </SVGText>
       <SVGText
         fontSize={30}
+        letterSpacing={0}
         textAnchor="end"
         color={colors.DISPLAY_GREEN}
-        transform="matrix(1 0 0 1 445 155)"
+        transform="matrix(1 0 0 1 446 157)"
       >
-        700
+        {totalFuelFlow > 1000 ? pad(hundredsValue, 3) : hundredsValue}
       </SVGText>
       <SVGPath
         color={colors.DISPLAY_WHITE}

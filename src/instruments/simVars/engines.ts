@@ -65,6 +65,11 @@ export const EngineSimVars = () => {
     "Number"
   );
 
+  const [engine1FuelFlowPPH] = useSimVar("TURB ENG FUEL FLOW PPH:1", "Number");
+  const [engine2FuelFlowPPH] = useSimVar("TURB ENG FUEL FLOW PPH:2", "Number");
+  const [engine3FuelFlowPPH] = useSimVar("TURB ENG FUEL FLOW PPH:3", "Number");
+  const [engine4FuelFlowPPH] = useSimVar("TURB ENG FUEL FLOW PPH:4", "Number");
+
   // BELOW IS FOR GOVERNED WHEN USING STANDBY ENGINE FORMAT
   // ENG EXHAUST GAS TEMPERATURE GES:index
 
@@ -73,6 +78,10 @@ export const EngineSimVars = () => {
     engine2N1RPM: (engine2N1RPM * 100).toFixed(1),
     engine3N1RPM: (engine3N1RPM * 100).toFixed(1),
     engine4N1RPM: (engine4N1RPM * 100).toFixed(1),
+    engine1FuelFlowPPH,
+    engine2FuelFlowPPH,
+    engine3FuelFlowPPH,
+    engine4FuelFlowPPH,
     engine1N2RPM,
     engine2N2RPM,
     engine3N2RPM,
@@ -85,9 +94,9 @@ export const EngineSimVars = () => {
     engine2ReverserPercent: engine2ReverserPercent.toFixed(2),
     engine3ReverserPercent: engine3ReverserPercent.toFixed(2),
     engine4ReverserPercent: engine4ReverserPercent.toFixed(2),
-    engine1ExhaustGasTemperature,
-    engine2ExhaustGasTemperature,
-    engine3ExhaustGasTemperature,
-    engine4ExhaustGasTemperature
+    engine1ExhaustGasTemperature: Math.round(engine1ExhaustGasTemperature),
+    engine2ExhaustGasTemperature: Math.round(engine2ExhaustGasTemperature),
+    engine3ExhaustGasTemperature: Math.round(engine3ExhaustGasTemperature),
+    engine4ExhaustGasTemperature: Math.round(engine4ExhaustGasTemperature)
   };
 };

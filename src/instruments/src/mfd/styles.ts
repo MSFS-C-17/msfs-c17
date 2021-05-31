@@ -7,7 +7,7 @@ export const MFDContainer = styled.div`
     css`brightness(${brightness}%) contrast(${contrast}%)`};
   height: 1280px;
   width: 1280px;
-  font-family: "DYMO Symbols A", monospace;
+  font-family: "DYMO Symbols", monospace;
   color: ${colors.DISPLAY_WHITE};
 `;
 
@@ -18,7 +18,7 @@ export const SVGText = styled.text`
   }};
   text-align: ${({ textAlign }) => textAlign || "inherit"};
   font-size: ${({ fontSize }) => fontSize || "25"}px;
-  letter-spacing: 2px;
+  letter-spacing: ${({ letterSpacing }) => letterSpacing || "2"}px; ;
 `;
 
 export const SVGPolygon = styled.polygon`

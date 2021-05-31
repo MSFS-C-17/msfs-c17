@@ -10567,17 +10567,21 @@
   })(colors || (colors = {}));
 
   var _templateObject$1, _templateObject2, _templateObject3, _templateObject4, _templateObject5, _templateObject6;
-  const MFDContainer = Ye.div(_templateObject$1 || (_templateObject$1 = _taggedTemplateLiteral(["\n  background-color: ", ";\n  filter: ", ";\n  height: 1280px;\n  width: 1280px;\n  font-family: \"DYMO Symbols A\", monospace;\n  color: ", ";\n"])), colors.DISPLAY_BLACK, ({
+  const MFDContainer = Ye.div(_templateObject$1 || (_templateObject$1 = _taggedTemplateLiteral(["\n  background-color: ", ";\n  filter: ", ";\n  height: 1280px;\n  width: 1280px;\n  font-family: \"DYMO Symbols\", monospace;\n  color: ", ";\n"])), colors.DISPLAY_BLACK, ({
     brightness,
     contrast
   }) => _e(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["brightness(", "%) contrast(", "%)"])), brightness, contrast), colors.DISPLAY_WHITE);
-  const SVGText = Ye.text(_templateObject3 || (_templateObject3 = _taggedTemplateLiteral(["\n  font-family: \"Dymo Symbols\", monospace;\n  fill: ", ";\n  text-align: ", ";\n  font-size: 25px;\n  letter-spacing: 2px;\n"])), ({
+  const SVGText = Ye.text(_templateObject3 || (_templateObject3 = _taggedTemplateLiteral(["\n  font-family: \"Dymo Symbols\", monospace;\n  fill: ", ";\n  text-align: ", ";\n  font-size: ", "px;\n  letter-spacing: ", "px; ;\n"])), ({
     color
   }) => {
     return color || colors.DISPLAY_WHITE;
   }, ({
     textAlign
-  }) => textAlign || "inherit");
+  }) => textAlign || "inherit", ({
+    fontSize
+  }) => fontSize || "25", ({
+    letterSpacing
+  }) => letterSpacing || "2");
   const SVGPolygon = Ye.polygon(_templateObject4 || (_templateObject4 = _taggedTemplateLiteral(["\n  fill: ", ";\n"])), ({
     color
   }) => {
@@ -10801,7 +10805,6 @@
     engine3PressureRatio,
     engine4PressureRatio
   }) => {
-    console.log('epr', engine1PressureRatio);
     return /*#__PURE__*/jsxRuntime.exports.jsxs(jsxRuntime.exports.Fragment, {
       children: [/*#__PURE__*/jsxRuntime.exports.jsx(SVGText, {
         color: colors.DISPLAY_WHITE,
@@ -10829,6 +10832,96 @@
     });
   };
 
+  const MaxEGT = ({
+    engine1ExhaustGasTemperature,
+    engine2ExhaustGasTemperature,
+    engine3ExhaustGasTemperature,
+    engine4ExhaustGasTemperature
+  }) => {
+    const maxEGT = Math.max(engine1ExhaustGasTemperature, engine2ExhaustGasTemperature, engine3ExhaustGasTemperature, engine4ExhaustGasTemperature);
+    let egtColor = colors.DISPLAY_BLACK;
+
+    if (maxEGT > 655) {
+      egtColor = colors.DISPLAY_RED;
+    } else if (maxEGT > 625) {
+      egtColor = colors.DISPLAY_YELLOW;
+    }
+    let timerStatus;
+    let timerColor;
+    let displayTime;
+
+    {
+      timerColor = colors.DISPLAY_BLACK;
+    }
+
+    const time = (() => {
+      const minutes = Math.floor(displayTime / 60000);
+      const seconds = (displayTime % 60000 / 1000).toFixed(0);
+      return "".concat(minutes < 10 ? "0" : "").concat(minutes, ":").concat(seconds < 10 ? "0" : "").concat(seconds);
+    })();
+
+    return /*#__PURE__*/jsxRuntime.exports.jsxs(jsxRuntime.exports.Fragment, {
+      children: [/*#__PURE__*/jsxRuntime.exports.jsx(SVGText, {
+        textAnchor: "end",
+        color: egtColor,
+        transform: "matrix(1 0 0 1 670 190)",
+        children: "MAX EGT"
+      }), /*#__PURE__*/jsxRuntime.exports.jsxs(SVGText, {
+        textAnchor: "end",
+        color: egtColor,
+        transform: "matrix(1 0 0 1 775 190)",
+        children: [maxEGT, "\xB0C"]
+      }), /*#__PURE__*/jsxRuntime.exports.jsx(SVGText, {
+        color: timerColor,
+        textAnchor: "end",
+        transform: "matrix(1 0 0 1 670 220)",
+        children: timerStatus
+      }), /*#__PURE__*/jsxRuntime.exports.jsx(SVGText, {
+        textAnchor: "end",
+        color: timerColor,
+        transform: "matrix(1 0 0 1 775 220)",
+        children: time
+      })]
+    });
+  };
+
+  const pad = (input, size) => {
+    const output = "000000000" + input;
+    return output.substr(output.length - size);
+  };
+
+  const FuelFlow = ({
+    totalFuelFlow
+  }) => {
+    const decimalise = totalFuelFlow / 1000;
+    const hundredsValue = Math.floor((decimalise - Math.floor(decimalise)) * 10) * 100;
+    const thousandsValue = Math.floor(decimalise);
+    return /*#__PURE__*/jsxRuntime.exports.jsxs(jsxRuntime.exports.Fragment, {
+      children: [/*#__PURE__*/jsxRuntime.exports.jsx(SVGText, {
+        color: colors.DISPLAY_WHITE,
+        transform: "matrix(1 0 0 1 339.5353 112.486)",
+        children: "FF PPH"
+      }), /*#__PURE__*/jsxRuntime.exports.jsx(SVGText, {
+        fontSize: 40,
+        letterSpacing: 0,
+        textAnchor: "end",
+        color: colors.DISPLAY_GREEN,
+        transform: "matrix(1 0 0 1 391 160)",
+        children: thousandsValue > 0 && thousandsValue
+      }), /*#__PURE__*/jsxRuntime.exports.jsx(SVGText, {
+        fontSize: 30,
+        letterSpacing: 0,
+        textAnchor: "end",
+        color: colors.DISPLAY_GREEN,
+        transform: "matrix(1 0 0 1 446 157)",
+        children: totalFuelFlow > 1000 ? pad(hundredsValue, 3) : hundredsValue
+      }), /*#__PURE__*/jsxRuntime.exports.jsx(SVGPath, {
+        color: colors.DISPLAY_WHITE,
+        d: "M453,168.51H339.04v-45.15H453V168.51z M342.04,165.51H450v-39.15H342.04V165.51z"
+      })]
+    });
+  };
+
   const ENG = ({
     engine1N1RPM,
     engine2N1RPM,
@@ -10841,17 +10934,26 @@
     engine1ReverserPercent,
     engine2ReverserPercent,
     engine3ReverserPercent,
-    engine4ReverserPercent
+    engine4ReverserPercent,
+    engine1ExhaustGasTemperature,
+    engine2ExhaustGasTemperature,
+    engine3ExhaustGasTemperature,
+    engine4ExhaustGasTemperature,
+    engine1FuelFlowPPH,
+    engine2FuelFlowPPH,
+    engine3FuelFlowPPH,
+    engine4FuelFlowPPH
   }) => {
-    console.log("-", engine1PressureRatio);
-    console.log("+", engine1ReverserPercent);
-    return /*#__PURE__*/jsxRuntime.exports.jsxs(ENGView, {
-      children: ["ENG", /*#__PURE__*/jsxRuntime.exports.jsxs("svg", {
+    const totalFuelFlow = engine1FuelFlowPPH + engine2FuelFlowPPH + engine3FuelFlowPPH + engine4FuelFlowPPH;
+    return /*#__PURE__*/jsxRuntime.exports.jsx(ENGView, {
+      children: /*#__PURE__*/jsxRuntime.exports.jsxs("svg", {
         version: "1.1",
         x: "0px",
         y: "0px",
         viewBox: "0 0 800 800",
-        children: [/*#__PURE__*/jsxRuntime.exports.jsx(ReverserStatus, {
+        children: [/*#__PURE__*/jsxRuntime.exports.jsx(FuelFlow, {
+          totalFuelFlow: totalFuelFlow
+        }), /*#__PURE__*/jsxRuntime.exports.jsx(ReverserStatus, {
           x: 77,
           status: engine1ReverserPercent > 0 ? EReverserStatus.DEPLOYED : EReverserStatus.STOWED
         }), /*#__PURE__*/jsxRuntime.exports.jsx(ReverserStatus, {
@@ -10863,6 +10965,11 @@
         }), /*#__PURE__*/jsxRuntime.exports.jsx(ReverserStatus, {
           x: 654,
           status: engine4ReverserPercent > 0 ? EReverserStatus.DEPLOYED : EReverserStatus.STOWED
+        }), /*#__PURE__*/jsxRuntime.exports.jsx(MaxEGT, {
+          engine1ExhaustGasTemperature: engine1ExhaustGasTemperature,
+          engine2ExhaustGasTemperature: engine2ExhaustGasTemperature,
+          engine3ExhaustGasTemperature: engine3ExhaustGasTemperature,
+          engine4ExhaustGasTemperature: engine4ExhaustGasTemperature
         }), /*#__PURE__*/jsxRuntime.exports.jsx(EPRTapeScale, {
           engine1Rating: engine1PressureRatio,
           engine2Rating: engine2PressureRatio,
@@ -10879,7 +10986,7 @@
           engine3N1RPM: engine3N1RPM,
           engine4N1RPM: engine4N1RPM
         })]
-      })]
+      })
     });
   };
 
@@ -11069,14 +11176,14 @@
   }) => {
     const gearPositionColor = () => {
       switch (gearPosition) {
-        case 1:
+        case 0:
           return "transparent";
 
-        case 0:
-          return colors.DISPLAY_RED;
+        case 1:
+          return colors.DISPLAY_GREEN;
 
         case 2:
-          return colors.DISPLAY_GREEN;
+          return colors.DISPLAY_RED;
       }
     };
 
@@ -11796,12 +11903,11 @@
   let EMFDViews;
 
   (function (EMFDViews) {
-    EMFDViews[EMFDViews["OFF"] = 0] = "OFF";
-    EMFDViews[EMFDViews["PFD"] = 1] = "PFD";
-    EMFDViews[EMFDViews["ND"] = 2] = "ND";
-    EMFDViews[EMFDViews["PPI"] = 3] = "PPI";
-    EMFDViews[EMFDViews["ENG"] = 4] = "ENG";
-    EMFDViews[EMFDViews["CFG"] = 5] = "CFG";
+    EMFDViews["PFD"] = "PFD";
+    EMFDViews["ND"] = "ND";
+    EMFDViews["PPI"] = "PPI";
+    EMFDViews["ENG"] = "ENG";
+    EMFDViews["CFG"] = "CFG";
   })(EMFDViews || (EMFDViews = {}));
 
   let EDisplayModes;
@@ -11813,7 +11919,7 @@
   })(EDisplayModes || (EDisplayModes = {}));
 
   const MFD = ({
-    displayView = EMFDViews.ENG,
+    displayView = EMFDViews.CFG,
     displayMode = EDisplayModes.DAY,
     brightness = 100,
     contrast = 100,
@@ -11869,7 +11975,11 @@
     const [engine1PressureRatio] = useSimVar("TURB ENG PRESSURE RATIO:1", "Number");
     const [engine2PressureRatio] = useSimVar("TURB ENG PRESSURE RATIO:2", "Number");
     const [engine3PressureRatio] = useSimVar("TURB ENG PRESSURE RATIO:3", "Number");
-    const [engine4PressureRatio] = useSimVar("TURB ENG PRESSURE RATIO:4", "Number"); // BELOW IS FOR GOVERNED WHEN USING STANDBY ENGINE FORMAT
+    const [engine4PressureRatio] = useSimVar("TURB ENG PRESSURE RATIO:4", "Number");
+    const [engine1FuelFlowPPH] = useSimVar("TURB ENG FUEL FLOW PPH:1", "Number");
+    const [engine2FuelFlowPPH] = useSimVar("TURB ENG FUEL FLOW PPH:2", "Number");
+    const [engine3FuelFlowPPH] = useSimVar("TURB ENG FUEL FLOW PPH:3", "Number");
+    const [engine4FuelFlowPPH] = useSimVar("TURB ENG FUEL FLOW PPH:4", "Number"); // BELOW IS FOR GOVERNED WHEN USING STANDBY ENGINE FORMAT
     // ENG EXHAUST GAS TEMPERATURE GES:index
 
     return {
@@ -11877,22 +11987,26 @@
       engine2N1RPM: (engine2N1RPM * 100).toFixed(1),
       engine3N1RPM: (engine3N1RPM * 100).toFixed(1),
       engine4N1RPM: (engine4N1RPM * 100).toFixed(1),
+      engine1FuelFlowPPH,
+      engine2FuelFlowPPH,
+      engine3FuelFlowPPH,
+      engine4FuelFlowPPH,
       engine1N2RPM,
       engine2N2RPM,
       engine3N2RPM,
       engine4N2RPM,
-      engine1PressureRatio,
-      engine2PressureRatio,
-      engine3PressureRatio,
-      engine4PressureRatio,
+      engine1PressureRatio: engine1PressureRatio.toFixed(2),
+      engine2PressureRatio: engine2PressureRatio.toFixed(2),
+      engine3PressureRatio: engine3PressureRatio.toFixed(2),
+      engine4PressureRatio: engine4PressureRatio.toFixed(2),
       engine1ReverserPercent: engine1ReverserPercent.toFixed(2),
       engine2ReverserPercent: engine2ReverserPercent.toFixed(2),
       engine3ReverserPercent: engine3ReverserPercent.toFixed(2),
       engine4ReverserPercent: engine4ReverserPercent.toFixed(2),
-      engine1ExhaustGasTemperature,
-      engine2ExhaustGasTemperature,
-      engine3ExhaustGasTemperature,
-      engine4ExhaustGasTemperature
+      engine1ExhaustGasTemperature: Math.round(engine1ExhaustGasTemperature),
+      engine2ExhaustGasTemperature: Math.round(engine2ExhaustGasTemperature),
+      engine3ExhaustGasTemperature: Math.round(engine3ExhaustGasTemperature),
+      engine4ExhaustGasTemperature: Math.round(engine4ExhaustGasTemperature)
     };
   };
 

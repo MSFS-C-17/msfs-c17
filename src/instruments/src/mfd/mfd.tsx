@@ -8,12 +8,11 @@ import { MFDContainer } from "./styles";
 import { EReverserStatus } from "./views/eng/components/reverser-status";
 
 export enum EMFDViews {
-  OFF,
-  PFD,
-  ND,
-  PPI,
-  ENG,
-  CFG
+  PFD = "PFD",
+  ND = "ND",
+  PPI = "PPI",
+  ENG = "ENG",
+  CFG = "CFG"
 }
 
 export enum EDisplayModes {
@@ -32,7 +31,7 @@ export type TMFDProps = {
 };
 
 export const MFD: React.FC<TMFDProps> = ({
-  displayView = EMFDViews.ENG,
+  displayView = EMFDViews.CFG,
   displayMode = EDisplayModes.DAY,
   brightness = 100,
   contrast = 100,

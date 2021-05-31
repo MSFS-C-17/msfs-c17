@@ -36,6 +36,10 @@ export type TENGProps = {
   engine2ExhaustGasTemperature: number;
   engine3ExhaustGasTemperature: number;
   engine4ExhaustGasTemperature: number;
+  engine1FuelFlowPPH: number;
+  engine2FuelFlowPPH: number;
+  engine3FuelFlowPPH: number;
+  engine4FuelFlowPPH: number;
 };
 
 export const ENG: React.FC<TENGProps> = ({
@@ -54,16 +58,22 @@ export const ENG: React.FC<TENGProps> = ({
   engine1ExhaustGasTemperature,
   engine2ExhaustGasTemperature,
   engine3ExhaustGasTemperature,
-  engine4ExhaustGasTemperature
+  engine4ExhaustGasTemperature,
+  engine1FuelFlowPPH,
+  engine2FuelFlowPPH,
+  engine3FuelFlowPPH,
+  engine4FuelFlowPPH
 }) => {
-  console.log("-", engine1PressureRatio);
-  console.log("+", engine1ReverserPercent);
+  const totalFuelFlow =
+    engine1FuelFlowPPH +
+    engine2FuelFlowPPH +
+    engine3FuelFlowPPH +
+    engine4FuelFlowPPH;
 
   return (
     <ENGView>
-      ENG
       <svg version="1.1" x="0px" y="0px" viewBox="0 0 800 800">
-        <FuelFlow />
+        <FuelFlow totalFuelFlow={totalFuelFlow} />
         <ReverserStatus
           x={77}
           status={
