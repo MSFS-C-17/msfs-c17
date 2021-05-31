@@ -10758,15 +10758,54 @@
     }
   };
 
+  const N1RPMPercent = ({
+    engine1N1RPM,
+    engine2N1RPM,
+    engine3N1RPM,
+    engine4N1RPM
+  }) => {
+    return /*#__PURE__*/jsxRuntime.exports.jsxs(jsxRuntime.exports.Fragment, {
+      children: [/*#__PURE__*/jsxRuntime.exports.jsx(SVGText, {
+        color: colors.DISPLAY_WHITE,
+        transform: "matrix(1 0 0 1 380 716.2592)",
+        children: "N1"
+      }), /*#__PURE__*/jsxRuntime.exports.jsx(SVGText, {
+        color: colors.DISPLAY_WHITE,
+        transform: "matrix(1 0 0 1 352 749.0988)",
+        children: "%RPM"
+      }), /*#__PURE__*/jsxRuntime.exports.jsx(SVGText, {
+        color: colors.DISPLAY_GREEN,
+        transform: "matrix(1 0 0 1 125 736.1696)",
+        children: engine1N1RPM
+      }), /*#__PURE__*/jsxRuntime.exports.jsx(SVGText, {
+        color: colors.DISPLAY_GREEN,
+        transform: "matrix(1 0 0 1 262 736.1694)",
+        children: engine2N1RPM
+      }), /*#__PURE__*/jsxRuntime.exports.jsx(SVGText, {
+        color: colors.DISPLAY_GREEN,
+        transform: "matrix(1 0 0 1 481 736.1694)",
+        children: engine3N1RPM
+      }), /*#__PURE__*/jsxRuntime.exports.jsx(SVGText, {
+        color: colors.DISPLAY_GREEN,
+        transform: "matrix(1 0 0 1 617 736.1694)",
+        children: engine4N1RPM
+      })]
+    });
+  };
+
   const ENG = ({
-    engine1Rating,
-    engine1ReverserStatus,
-    engine2Rating,
-    engine2ReverserStatus,
-    engine3Rating,
-    engine3ReverserStatus,
-    engine4Rating,
-    engine4ReverserStatus
+    engine1N1RPM,
+    engine2N1RPM,
+    engine3N1RPM,
+    engine4N1RPM,
+    engine1PressureRatio,
+    engine2PressureRatio,
+    engine3PressureRatio,
+    engine4PressureRatio,
+    engine1ReverserPercent,
+    engine2ReverserPercent,
+    engine3ReverserPercent,
+    engine4ReverserPercent
   }) => {
     return /*#__PURE__*/jsxRuntime.exports.jsxs(ENGView, {
       children: ["ENG", /*#__PURE__*/jsxRuntime.exports.jsxs("svg", {
@@ -10776,21 +10815,26 @@
         viewBox: "0 0 800 800",
         children: [/*#__PURE__*/jsxRuntime.exports.jsx(ReverserStatus, {
           x: 77,
-          status: engine1ReverserStatus
+          status: engine1ReverserPercent > 0 ? EReverserStatus.DEPLOYED : EReverserStatus.STOWED
         }), /*#__PURE__*/jsxRuntime.exports.jsx(ReverserStatus, {
           x: 207,
-          status: engine2ReverserStatus
+          status: engine2ReverserPercent > 0 ? EReverserStatus.DEPLOYED : EReverserStatus.STOWED
         }), /*#__PURE__*/jsxRuntime.exports.jsx(ReverserStatus, {
           x: 526,
-          status: engine3ReverserStatus
+          status: engine3ReverserPercent > 0 ? EReverserStatus.DEPLOYED : EReverserStatus.STOWED
         }), /*#__PURE__*/jsxRuntime.exports.jsx(ReverserStatus, {
           x: 654,
-          status: engine4ReverserStatus
+          status: engine4ReverserPercent > 0 ? EReverserStatus.DEPLOYED : EReverserStatus.STOWED
         }), /*#__PURE__*/jsxRuntime.exports.jsx(EPRTapeScale, {
-          engine1Rating: engine1Rating,
-          engine2Rating: engine2Rating,
-          engine3Rating: engine3Rating,
-          engine4Rating: engine4Rating
+          engine1Rating: engine1PressureRatio,
+          engine2Rating: engine2PressureRatio,
+          engine3Rating: engine3PressureRatio,
+          engine4Rating: engine4PressureRatio
+        }), /*#__PURE__*/jsxRuntime.exports.jsx(N1RPMPercent, {
+          engine1N1RPM: engine1N1RPM,
+          engine2N1RPM: engine2N1RPM,
+          engine3N1RPM: engine3N1RPM,
+          engine4N1RPM: engine4N1RPM
         })]
       })]
     });
@@ -11730,7 +11774,8 @@
     displayMode = EDisplayModes.DAY,
     brightness = 100,
     contrast = 100,
-    cfgValues
+    cfgValues,
+    engValues
   }) => {
     const currentView = () => {
       if (displayMode === EDisplayModes.OFF) return /*#__PURE__*/jsxRuntime.exports.jsx(jsxRuntime.exports.Fragment, {});
@@ -11746,16 +11791,7 @@
           return /*#__PURE__*/jsxRuntime.exports.jsx(PPI, {});
 
         case EMFDViews.ENG:
-          return /*#__PURE__*/jsxRuntime.exports.jsx(ENG, {
-            engine1Rating: 1.5,
-            engine2Rating: 1.5,
-            engine3Rating: 1.5,
-            engine4Rating: 1.5,
-            engine1ReverserStatus: EReverserStatus.DEPLOYED,
-            engine2ReverserStatus: EReverserStatus.UNLOCKED,
-            engine3ReverserStatus: EReverserStatus.UNLOCKED,
-            engine4ReverserStatus: EReverserStatus.DEPLOYED
-          });
+          return /*#__PURE__*/jsxRuntime.exports.jsx(ENG, _objectSpread$1({}, engValues));
 
         case EMFDViews.CFG:
           return /*#__PURE__*/jsxRuntime.exports.jsx(CFG, _objectSpread$1({}, cfgValues));
@@ -11768,6 +11804,53 @@
       contrast: contrast,
       children: currentView()
     });
+  };
+
+  const EngineSimVars = () => {
+    const [engine1ReverserPercent] = useSimVar("TURB ENG REVERSE NOZZLE PERCENT:1", "Number");
+    const [engine2ReverserPercent] = useSimVar("TURB ENG REVERSE NOZZLE PERCENT:2", "Number");
+    const [engine3ReverserPercent] = useSimVar("TURB ENG REVERSE NOZZLE PERCENT:3", "Number");
+    const [engine4ReverserPercent] = useSimVar("TURB ENG REVERSE NOZZLE PERCENT:4", "Number");
+    const [engine1ExhaustGasTemperature] = useSimVar("ENG EXHAUST GAS TEMPERATURE:1", "Number");
+    const [engine2ExhaustGasTemperature] = useSimVar("ENG EXHAUST GAS TEMPERATURE:2", "Number");
+    const [engine3ExhaustGasTemperature] = useSimVar("ENG EXHAUST GAS TEMPERATURE:3", "Number");
+    const [engine4ExhaustGasTemperature] = useSimVar("ENG EXHAUST GAS TEMPERATURE:4", "Number");
+    const [engine1N1RPM] = useSimVar("ENG N1 RPM:1", "Number");
+    const [engine2N1RPM] = useSimVar("ENG N1 RPM:2", "Number");
+    const [engine3N1RPM] = useSimVar("ENG N1 RPM:3", "Number");
+    const [engine4N1RPM] = useSimVar("ENG N1 RPM:4", "Number");
+    const [engine1N2RPM] = useSimVar("ENG N1 RPM:1", "Number");
+    const [engine2N2RPM] = useSimVar("ENG N1 RPM:2", "Number");
+    const [engine3N2RPM] = useSimVar("ENG N1 RPM:3", "Number");
+    const [engine4N2RPM] = useSimVar("ENG N1 RPM:4", "Number");
+    const [engine1PressureRatio] = useSimVar("TURB ENG PRESSURE RATIO:1", "Number");
+    const [engine2PressureRatio] = useSimVar("TURB ENG PRESSURE RATIO:2", "Number");
+    const [engine3PressureRatio] = useSimVar("TURB ENG PRESSURE RATIO:3", "Number");
+    const [engine4PressureRatio] = useSimVar("TURB ENG PRESSURE RATIO:4", "Number"); // BELOW IS FOR GOVERNED WHEN USING STANDBY ENGINE FORMAT
+    // ENG EXHAUST GAS TEMPERATURE GES:index
+
+    return {
+      engine1N1RPM: (engine1N1RPM * 100).toFixed(1),
+      engine2N1RPM: (engine2N1RPM * 100).toFixed(1),
+      engine3N1RPM: (engine3N1RPM * 100).toFixed(1),
+      engine4N1RPM: (engine4N1RPM * 100).toFixed(1),
+      engine1N2RPM,
+      engine2N2RPM,
+      engine3N2RPM,
+      engine4N2RPM,
+      engine1PressureRatio,
+      engine2PressureRatio,
+      engine3PressureRatio,
+      engine4PressureRatio,
+      engine1ReverserPercent: engine1ReverserPercent.toFixed(2),
+      engine2ReverserPercent: engine2ReverserPercent.toFixed(2),
+      engine3ReverserPercent: engine3ReverserPercent.toFixed(2),
+      engine4ReverserPercent: engine4ReverserPercent.toFixed(2),
+      engine1ExhaustGasTemperature,
+      engine2ExhaustGasTemperature,
+      engine3ExhaustGasTemperature,
+      engine4ExhaustGasTemperature
+    };
   };
 
   function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
@@ -11804,17 +11887,13 @@
       gearPosition,
       brakeTemperature: 0
     };
-    console.log({
-      s: stabiliserTrim,
-      a: aileronTrim,
-      r: rudderTrim
-    });
     const mfdProps = {
       displayMode: EDisplayModes.DAY,
       displayView: EMFDViews.ENG,
       brightness: 100,
       contrast: 100,
-      cfgValues: cfgValues
+      cfgValues: cfgValues,
+      engValues: _objectSpread({}, EngineSimVars())
     };
     return /*#__PURE__*/jsxRuntime.exports.jsx(MFD, _objectSpread({}, mfdProps));
   };

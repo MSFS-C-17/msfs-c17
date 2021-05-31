@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import ENG from "./index";
 import { EReverserStatus } from "./components/reverser-status";
-import { EDisplayModes } from "../../index";
 
 export default {
   title: "Displays/Index/ENG",

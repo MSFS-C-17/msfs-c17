@@ -3,6 +3,8 @@ import { render } from "@instruments/common/index";
 import { EDisplayModes, EMFDViews, MFD, TMFDProps } from "./mfd";
 import { useSimVar } from "@instruments/common/simVars";
 import { TCFGProps } from "./views/cfg";
+import { TENGProps } from "./views/eng";
+import { EngineSimVars } from "../../simVars/engines";
 
 const Panel: React.FC = () => {
   const [rightFlapsPosition] = useSimVar(
@@ -53,14 +55,13 @@ const Panel: React.FC = () => {
     brakeTemperature: 0
   };
 
-  console.log({ s: stabiliserTrim, a: aileronTrim, r: rudderTrim });
-
   const mfdProps: TMFDProps = {
     displayMode: EDisplayModes.DAY,
     displayView: EMFDViews.ENG,
     brightness: 100,
     contrast: 100,
-    cfgValues: cfgValues
+    cfgValues: cfgValues,
+    engValues: { ...EngineSimVars() }
   };
 
   return <MFD {...mfdProps} />;

@@ -1,5 +1,14 @@
 import React from "react";
 import { EDisplayModes, TFI } from "./tfi";
 import { render } from "@instruments/common/index";
+import { useSimVar } from "@instruments/common/simVars";
 
-render(<TFI displayMode={EDisplayModes.ON} fuelAmount={500} />);
+const Panel: React.FC = () => {
+  const [totalFuelAmount] = useSimVar("FUEL TOTAL QUANTITY WEIGHT", "Number");
+
+  console.log("totalFuelAmount", totalFuelAmount);
+
+  return <TFI displayMode={EDisplayModes.ON} fuelAmount={totalFuelAmount} />;
+};
+
+render(<Panel />);
