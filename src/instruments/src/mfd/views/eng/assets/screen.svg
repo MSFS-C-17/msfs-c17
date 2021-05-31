@@ -4723,11 +4723,11 @@ i4AIiIAIiIAIiIAIiIAIiIAIiIAIiEBBE5AwVNCXR40TAREQAREQAREQAREQAREQAREQAREQgfwR
     <g>
 </g>
     <text transform="matrix(1 0 0 1 339.5353 112.486)" class="st5 st2 st6 st7">FF PPH</text>
+    <text transform="matrix(1 0 0 1 349.8045 159.6816)" class="st8 st2 st14 st15">21</text>
+    <text transform="matrix(1 0 0 1 393.9376 156.807)" class="st8 st2 st12">700</text>
     <text transform="matrix(1 0 0 1 166.2827 221.0271)" class="st1 st2 st6 st7">1.22 MCT</text>
     <text transform="matrix(1 0 0 1 164.755 189.5978)"><tspan x="0" y="0" class="st5 st2 st6 st7">1.3</tspan><tspan x="47.32" y="0" class="st5 st2 st6 st13">7</tspan></text>
     <text transform="matrix(1 0 0 1 380.6056 72.99)" class="st1 st2 st12">04:10</text>
-    <text transform="matrix(1 0 0 1 349.8045 159.6816)" class="st8 st2 st14 st15">21</text>
-    <text transform="matrix(1 0 0 1 393.9376 156.807)" class="st8 st2 st12">700</text>
     <text transform="matrix(1 0 0 1 534.079 72.9898)" class="st8 st2 st12 st9">BRAKE</text>
     <text transform="matrix(1 0 0 1 653.4885 72.9896)"><tspan x="0" y="0" class="st8 st2 st12">476</tspan><tspan x="50.05" y="0" class="st8 st2 st11">°C</tspan></text>
     <g>
@@ -4782,5 +4782,5 @@ i4AIiIAIiIAIiIAIiIAIiIAIiIAIiEBBE5AwVNCXR40TAREQAREQAREQAREQAREQAREQAREQgfwR
 	z"/>
     <text transform="matrix(1 0 0 1 73.0362 487.0526)" class="st1 st2 st6 st9">R</text>
     <text transform="matrix(1 0 0 1 59.8179 442.739)" class="st0 st2 st6 st9">L</text>
-    <path class="st5" d="M453,168.51H339.04v-45.15H453V168.51z M342.04,165.51H450v-39.15H342.04V165.51z"/>
+
 </svg>

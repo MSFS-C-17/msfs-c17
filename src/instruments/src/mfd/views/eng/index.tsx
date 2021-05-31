@@ -5,6 +5,7 @@ import { EReverserStatus, ReverserStatus } from "./components/reverser-status";
 import { N1RPMPercent } from "./components/n1-rpm-percent";
 import { EPRReadout } from "./components/epr-readout";
 import { MaxEGT } from "./components/max-egt";
+import { FuelFlow } from "./components/fuel-flow";
 
 export type TENGProps = {
   engine1N1RPM: number;
@@ -62,6 +63,7 @@ export const ENG: React.FC<TENGProps> = ({
     <ENGView>
       ENG
       <svg version="1.1" x="0px" y="0px" viewBox="0 0 800 800">
+        <FuelFlow />
         <ReverserStatus
           x={77}
           status={

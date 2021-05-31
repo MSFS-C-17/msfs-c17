@@ -17,7 +17,7 @@ export const SVGText = styled.text`
     return color || colors.DISPLAY_WHITE;
   }};
   text-align: ${({ textAlign }) => textAlign || "inherit"};
-  font-size: 25px;
+  font-size: ${({ fontSize }) => fontSize || "25"}px;
   letter-spacing: 2px;
 `;
 
