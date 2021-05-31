@@ -22,6 +22,22 @@ export default {
       defaultValue: 0,
       control: { type: "range", min: 0, max: 100, step: .1 }
     },
+    engine1ExhaustGasTemperature: {
+      defaultValue: 0,
+      control: { type: "range", min: 0, max: 1000, step: 1 }
+    },
+    engine2ExhaustGasTemperature: {
+      defaultValue: 0,
+      control: { type: "range", min: 0, max: 1000, step: 1 }
+    },
+    engine3ExhaustGasTemperature: {
+      defaultValue: 0,
+      control: { type: "range", min: 0, max: 1000, step: 1 }
+    },
+    engine4ExhaustGasTemperature: {
+      defaultValue: 0,
+      control: { type: "range", min: 0, max: 1000, step: 1 }
+    },
     engine1ReverserPercent: {
       defaultValue: 0,
       control: { type: "range", min: 0, max: 100, step: 1 }

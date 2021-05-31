@@ -4719,8 +4719,8 @@ i4AIiIAIiIAIiIAIiIAIiIAIiIAIiEBBE5AwVNCXR40TAREQAREQAREQAREQAREQAREQAREQgfwR
     <text transform="matrix(1 0 0 1 510.0659 221.6861)" class="st1 st2 st11 st9">TIME REM</text>
     <text transform="matrix(1 0 0 1 695.6986 222.0099)" class="st1 st2 st12 st9">04:06</text>
     <text transform="matrix(1 0 0 1 522.1137 190.684)" class="st0 st2 st11 st7">MAX EGT</text>
-    <g>
 	<text transform="matrix(1 0 0 1 694.1538 190.6837)" class="st0 st2 st11">630°C</text>
+    <g>
 </g>
     <text transform="matrix(1 0 0 1 339.5353 112.486)" class="st5 st2 st6 st7">FF PPH</text>
     <text transform="matrix(1 0 0 1 166.2827 221.0271)" class="st1 st2 st6 st7">1.22 MCT</text>

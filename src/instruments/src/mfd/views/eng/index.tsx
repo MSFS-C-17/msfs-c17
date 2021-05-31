@@ -4,6 +4,7 @@ import EPRTapeScale from "./components/epr-tape-scale";
 import { EReverserStatus, ReverserStatus } from "./components/reverser-status";
 import { N1RPMPercent } from "./components/n1-rpm-percent";
 import { EPRReadout } from "./components/epr-readout";
+import { MaxEGT } from "./components/max-egt";
 
 export type TENGProps = {
   engine1N1RPM: number;
@@ -48,11 +49,14 @@ export const ENG: React.FC<TENGProps> = ({
   engine1ReverserPercent,
   engine2ReverserPercent,
   engine3ReverserPercent,
-  engine4ReverserPercent
+  engine4ReverserPercent,
+  engine1ExhaustGasTemperature,
+  engine2ExhaustGasTemperature,
+  engine3ExhaustGasTemperature,
+  engine4ExhaustGasTemperature
 }) => {
   console.log("-", engine1PressureRatio);
   console.log("+", engine1ReverserPercent);
-
 
   return (
     <ENGView>
@@ -89,6 +93,12 @@ export const ENG: React.FC<TENGProps> = ({
               ? EReverserStatus.DEPLOYED
               : EReverserStatus.STOWED
           }
+        />
+        <MaxEGT
+          engine1ExhaustGasTemperature={engine1ExhaustGasTemperature}
+          engine2ExhaustGasTemperature={engine2ExhaustGasTemperature}
+          engine3ExhaustGasTemperature={engine3ExhaustGasTemperature}
+          engine4ExhaustGasTemperature={engine4ExhaustGasTemperature}
         />
         <EPRTapeScale
           engine1Rating={engine1PressureRatio}
