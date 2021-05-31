@@ -31,13 +31,15 @@ export const N1RPMPercent: React.FC<TN1RPMPercentProps> = ({
       </SVGText>
       <SVGText
         color={colors.DISPLAY_GREEN}
-        transform="matrix(1 0 0 1 125 736.1696)"
+        transform="matrix(1 0 0 1 180 736.1696)"
+        textAnchor="end"
       >
         {engine1N1RPM}
       </SVGText>
       <SVGText
         color={colors.DISPLAY_GREEN}
-        transform="matrix(1 0 0 1 262 736.1694)"
+        transform="matrix(1 0 0 1 315 736.1694)"
+        textAnchor="end"
       >
         {engine2N1RPM}
       </SVGText>

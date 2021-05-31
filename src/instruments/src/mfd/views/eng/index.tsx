@@ -3,6 +3,7 @@ import { ENGView } from "./styles";
 import EPRTapeScale from "./components/epr-tape-scale";
 import { EReverserStatus, ReverserStatus } from "./components/reverser-status";
 import { N1RPMPercent } from "./components/n1-rpm-percent";
+import { EPRReadout } from "./components/epr-readout";
 
 export type TENGProps = {
   engine1N1RPM: number;
@@ -52,6 +53,7 @@ export const ENG: React.FC<TENGProps> = ({
   console.log("-", engine1PressureRatio);
   console.log("+", engine1ReverserPercent);
 
+
   return (
     <ENGView>
       ENG
@@ -93,6 +95,12 @@ export const ENG: React.FC<TENGProps> = ({
           engine2Rating={engine2PressureRatio}
           engine3Rating={engine3PressureRatio}
           engine4Rating={engine4PressureRatio}
+        />
+        <EPRReadout
+          engine1PressureRatio={engine1PressureRatio}
+          engine2PressureRatio={engine2PressureRatio}
+          engine3PressureRatio={engine3PressureRatio}
+          engine4PressureRatio={engine4PressureRatio}
         />
         <N1RPMPercent
           engine1N1RPM={engine1N1RPM}

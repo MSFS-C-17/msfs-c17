@@ -4701,9 +4701,12 @@ i4AIiIAIiIAIiIAIiIAIiIAIiIAIiEBBE5AwVNCXR40TAREQAREQAREQAREQAREQAREQAREQgfwR
     <rect x="298.29" y="250.41" class="st8" width="15.42" height="367.09"/>
     <rect x="483.84" y="250.41" class="st8" width="15.42" height="367.09"/>
     <rect x="621.55" y="250.41" class="st8" width="15.42" height="367.09"/>
-    <text transform="matrix(1 0 0 1 365.6166 675.7679)" class="st5 st2 st6 st7">EPR</text>
     <g>
+    <text transform="matrix(1 0 0 1 365.6166 675.7679)" class="st5 st2 st6 st7">EPR</text>
 	<text transform="matrix(1 0 0 1 621.5546 675.7689)" class="st1 st2 st6 st9">N2 MODE</text>
+    <text transform="matrix(1 0 0 1 205.4345 675.7683)" class="st1 st2 st6 st9">N1 MODE</text>
+    <text transform="matrix(1 0 0 1 102.8818 678.3588)" class="st8 st2 st10 st9">1.04</text>
+    <text transform="matrix(1 0 0 1 481.9377 678.3588)" class="st8 st2 st10 st9">1.04</text>
 </g>
 
 
@@ -4713,10 +4716,6 @@ i4AIiIAIiIAIiIAIiIAIiIAIiIAIiEBBE5AwVNCXR40TAREQAREQAREQAREQAREQAREQAREQgfwR
     <text transform="matrix(1 0 0 1 241.7789 736.1696)" class="st8 st2 st10 st9">90.5</text>
     <text transform="matrix(1 0 0 1 481.9376 736.1694)" class="st8 st2 st10 st9">92.7</text>
 
-    <text transform="matrix(1 0 0 1 205.4345 675.7683)" class="st1 st2 st6 st9">N1 MODE</text>
-    <text transform="matrix(1 0 0 1 102.8818 678.3588)" class="st8 st2 st10 st9">1.04</text>
-
-    <text transform="matrix(1 0 0 1 481.9377 678.3588)" class="st8 st2 st10 st9">1.04</text>
     <text transform="matrix(1 0 0 1 510.0659 221.6861)" class="st1 st2 st11 st9">TIME REM</text>
     <text transform="matrix(1 0 0 1 695.6986 222.0099)" class="st1 st2 st12 st9">04:06</text>
     <text transform="matrix(1 0 0 1 522.1137 190.684)" class="st0 st2 st11 st7">MAX EGT</text>
