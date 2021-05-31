@@ -22,27 +22,73 @@ export const MaxEGT: React.FC<TMaxEGT> = ({
     engine4ExhaustGasTemperature
   );
 
-  let egtColour = colors.DISPLAY_BLACK;
+  let egtColor = colors.DISPLAY_BLACK;
   if (maxEGT > 655) {
-    egtColour = colors.DISPLAY_RED;
+    egtColor = colors.DISPLAY_RED;
   } else if (maxEGT > 625) {
-    egtColour = colors.DISPLAY_YELLOW;
+    egtColor = colors.DISPLAY_YELLOW;
   }
 
-    return (
-      <>
-        <SVGText
-          color={egtColour}
-          transform="matrix(1 0 0 1 522.1137 190.684)"
-        >
-          MAX EGT
-        </SVGText>
-        <SVGText
-          color={egtColour}
-          transform="matrix(1 0 0 1 694.1538 190.6837)"
-        >
-          {maxEGT}°C
-        </SVGText>
-      </>
-    );
+  const fiveMinutes = 300000;
+  let timer = 0;
+  let timerStatus;
+  let timerColor;
+  let displayTime;
+  if (timer > fiveMinutes * 2 - 1) {
+    timerStatus = "TIME OVER";
+    timerColor = colors.DISPLAY_RED;
+    displayTime = timer - fiveMinutes;
+  } else if (timer > fiveMinutes) {
+    timerStatus = "TIME OVER";
+    timerColor = colors.DISPLAY_YELLOW;
+    displayTime = timer - fiveMinutes;
+  } else if (timer > 0) {
+    timerStatus = "TIME REM";
+    timerColor = colors.DISPLAY_GREEN;
+    displayTime = fiveMinutes - timer;
+  } else {
+    timerColor = colors.DISPLAY_BLACK;
+  }
+
+  const time: string = (() => {
+    const minutes = Math.floor(displayTime / 60000);
+    const seconds = ((displayTime % 60000) / 1000).toFixed(0);
+    return `${minutes < 10 ? "0" : ""}${minutes}:${
+      seconds < 10 ? "0" : ""
+    }${seconds}`;
+  })();
+
+  return (
+    <>
+      <SVGText
+        textAnchor="end"
+        color={egtColor}
+        transform="matrix(1 0 0 1 670 190)"
+      >
+        MAX EGT
+      </SVGText>
+      <SVGText
+        textAnchor="end"
+        color={egtColor}
+        transform="matrix(1 0 0 1 775 190)"
+      >
+        {maxEGT}°C
+      </SVGText>
+
+      <SVGText
+        color={timerColor}
+        textAnchor="end"
+        transform="matrix(1 0 0 1 670 220)"
+      >
+        {timerStatus}
+      </SVGText>
+      <SVGText
+        textAnchor="end"
+        color={timerColor}
+        transform="matrix(1 0 0 1 775 220)"
+      >
+        {time}
+      </SVGText>
+    </>
+  );
 };
