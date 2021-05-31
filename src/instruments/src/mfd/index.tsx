@@ -3,7 +3,6 @@ import { render } from "@instruments/common/index";
 import { EDisplayModes, EMFDViews, MFD, TMFDProps } from "./mfd";
 import { useSimVar } from "@instruments/common/simVars";
 import { TCFGProps } from "./views/cfg";
-import { createGlobalStyle } from "styled-components";
 
 const Panel: React.FC = () => {
   const [rightFlapsPosition] = useSimVar(
@@ -58,7 +57,7 @@ const Panel: React.FC = () => {
 
   const mfdProps: TMFDProps = {
     displayMode: EDisplayModes.DAY,
-    displayView: EMFDViews.CFG,
+    displayView: EMFDViews.ENG,
     brightness: 100,
     contrast: 100,
     cfgValues: cfgValues

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { MFD, EDisplayModes, EMFDViews, TMFDProps } from "./mfd";
 import { TCFGProps } from "./views/cfg";
 

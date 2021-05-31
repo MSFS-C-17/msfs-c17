@@ -1,11 +1,11 @@
-import fs from 'fs';
-import image from '@rollup/plugin-image';
 import { nodeResolve } from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
 import { babel as babelPlugin } from '@rollup/plugin-babel';
 import { typescriptPaths } from 'rollup-plugin-typescript-paths';
 import replace from '@rollup/plugin-replace';
 import { Directories } from './directories.mjs';
+import smartAsset from "rollup-plugin-smart-asset";
+import path from 'path';
 
 const extensions = ['.ts', '.tsx', '.js', '.jsx', '.mjs'];
 
@@ -28,7 +28,8 @@ function babel() {
 
 export function baseCompile(instrumentName, instrumentFolder) {
     return [
-        image(),
+        smartAsset({
+            url: "inline", extensions: [".ttf", ".otf"], maxSize: 150}),
         nodeResolve({ extensions }),
         commonjs({ include: /node_modules/ }),
         babel(),
