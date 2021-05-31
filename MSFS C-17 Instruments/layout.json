@@ -2,98 +2,98 @@
   "content": [
     {
       "path": "build_info.json",
-      "size": 156,
-      "date": 132669238610327200
+      "size": 142,
+      "date": 132669260104592590
     },
     {
       "path": "html_ui/Pages/VCockpit/Instruments/C17A/altsi/template.html",
       "size": 320264,
-      "date": 132669242067047900
+      "date": 132669276985511710
     },
     {
       "path": "html_ui/Pages/VCockpit/Instruments/C17A/altsi/template.js",
       "size": 1709,
-      "date": 132669242073307820
+      "date": 132669276986181540
     },
     {
       "path": "html_ui/Pages/VCockpit/Instruments/C17A/appr/template.html",
       "size": 320361,
-      "date": 132669242151125420
+      "date": 132669277062446990
     },
     {
       "path": "html_ui/Pages/VCockpit/Instruments/C17A/appr/template.js",
       "size": 1703,
-      "date": 132669242151197810
+      "date": 132669277062521040
     },
     {
       "path": "html_ui/Pages/VCockpit/Instruments/C17A/asi/template.html",
       "size": 321040,
-      "date": 132669242180028660
+      "date": 132669276957107650
     },
     {
       "path": "html_ui/Pages/VCockpit/Instruments/C17A/asi/template.js",
       "size": 1697,
-      "date": 132669242180428930
+      "date": 132669276957504220
     },
     {
       "path": "html_ui/Pages/VCockpit/Instruments/C17A/hsi/template.html",
       "size": 333648,
-      "date": 132669242223391000
+      "date": 132669276950933710
     },
     {
       "path": "html_ui/Pages/VCockpit/Instruments/C17A/hsi/template.js",
       "size": 1697,
-      "date": 132669242223437380
+      "date": 132669276951618720
     },
     {
       "path": "html_ui/Pages/VCockpit/Instruments/C17A/hud/template.html",
       "size": 217148,
-      "date": 132669242245787380
+      "date": 132669277068537520
     },
     {
       "path": "html_ui/Pages/VCockpit/Instruments/C17A/hud/template.js",
       "size": 1697,
-      "date": 132669242245832600
+      "date": 132669277068585710
     },
     {
       "path": "html_ui/Pages/VCockpit/Instruments/C17A/mfd/template.html",
-      "size": 342603,
-      "date": 132669242223881700
+      "size": 344281,
+      "date": 132669277019441700
     },
     {
       "path": "html_ui/Pages/VCockpit/Instruments/C17A/mfd/template.js",
       "size": 1697,
-      "date": 132669242223952060
+      "date": 132669277019496830
     },
     {
       "path": "html_ui/Pages/VCockpit/Instruments/C17A/test/template.html",
       "size": 216946,
-      "date": 132669242152003660
+      "date": 132669277020748020
     },
     {
       "path": "html_ui/Pages/VCockpit/Instruments/C17A/test/template.js",
       "size": 1703,
-      "date": 132669242152069300
+      "date": 132669277020933010
     },
     {
       "path": "html_ui/Pages/VCockpit/Instruments/C17A/tfi/template.html",
       "size": 280336,
-      "date": 132669242096488430
+      "date": 132669276917614620
     },
     {
       "path": "html_ui/Pages/VCockpit/Instruments/C17A/tfi/template.js",
       "size": 1697,
-      "date": 132669242101004530
+      "date": 132669276918150000
     },
     {
       "path": "html_ui/Pages/VCockpit/Instruments/C17A/tqi/template.html",
       "size": 270071,
-      "date": 132669242073492700
+      "date": 132669276941524350
     },
     {
       "path": "html_ui/Pages/VCockpit/Instruments/C17A/tqi/template.js",
       "size": 1697,
-      "date": 132669242082918000
+      "date": 132669276942469150
     },
     {
       "path": "html_ui/Pages/VCockpit/Instruments/C17A/vsi/fonts/Digital7Mono.ttf",
@@ -103,12 +103,12 @@
     {
       "path": "html_ui/Pages/VCockpit/Instruments/C17A/vsi/template.html",
       "size": 320455,
-      "date": 132669242179998660
+      "date": 132669277065209360
     },
     {
       "path": "html_ui/Pages/VCockpit/Instruments/C17A/vsi/template.js",
       "size": 1697,
-      "date": 132669242180262600
+      "date": 132669277065261460
     }
   ]
 }
