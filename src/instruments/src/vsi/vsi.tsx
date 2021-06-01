@@ -1,5 +1,5 @@
 import React from "react";
-import { LCD14Font } from "../../../globals/fonts/lcd14";
+import LCD14Font from "../../../globals/fonts/lcd14";
 import { VSIContainer, DigitsWrapper } from "./styles";
 import * as LCD from "../components/lcd-common";
 

@@ -1,7 +1,7 @@
 import React from "react";
 import { APPRContainer, DigitsWrapper, BigDigits } from "./styles";
 import * as LCD from "../components/lcd-common";
-import { LCD14Font } from "../../../globals/fonts/lcd14";
+import LCD14 from "../../../globals/fonts/lcd14";
 
 export type TAPPRProps = {
   displayMode: EDisplayModes;
@@ -19,7 +19,7 @@ export const APPR: React.FC<TAPPRProps> = ({
 }) => {
   return (
     <>
-      <LCD14Font />
+      <LCD14 />
       <APPRContainer>
         {displayMode === EDisplayModes.ON && (
           <DigitsWrapper>

@@ -3,7 +3,7 @@ import ENG from "./index";
 import { EReverserStatus } from "./components/reverser-status";
 
 export default {
-  title: "Displays/Index/ENG",
+  title: "Displays/MFD/ENG",
   component: ENG,
   argTypes: {
     engine1N1RPM: {

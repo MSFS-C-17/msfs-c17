@@ -1,9 +1,9 @@
 import { createGlobalStyle } from "styled-components";
 import DYMOSymbols from "../../fonts/DYMOSymbols.ttf";
 
-export const DYMOSymbols = createGlobalStyle`
+export default createGlobalStyle`
     @font-face {
         font-family: 'DYMO Symbols';
-        src: url(${LCD14});
+        src: url(${DYMOSymbols});
     }
 `;

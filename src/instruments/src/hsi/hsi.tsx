@@ -1,7 +1,7 @@
 import React from "react";
 import { HSIContainer, DigitsWrapper } from "./styles";
 import * as LCD from "../components/lcd-common";
-import { LCD14Font } from "../../../globals/fonts/lcd14";
+import LCD14 from "../../../globals/fonts/lcd14";
 
 export type THSIProps = {
   displayMode: EDisplayModes;
@@ -22,7 +22,7 @@ export const HSI: React.FC<THSIProps> = ({
 
   return (
     <>
-      <LCD14Font />
+      <LCD14 />
       <HSIContainer>
         {displayMode === EDisplayModes.ON && (
           <DigitsWrapper>

@@ -1,7 +1,7 @@
 import React from "react";
 import { ASIContainer, DigitsWrapper } from "./styles";
 import * as LCD from "../components/lcd-common";
-import { LCD14Font } from "../../../globals/fonts/lcd14";
+import LCD14 from "../../../globals/fonts/lcd14";
 
 export type TASIProps = {
   displayMode: EDisplayModes;
@@ -49,7 +49,7 @@ export const ASI: React.FC<TASIProps> = ({
   return (
     <>
       <ASIContainer>
-        <LCD14Font />
+        <LCD14 />
         {displayMode === EDisplayModes.ON && (
           <DigitsWrapper>
             <LCD.DigitsOn>

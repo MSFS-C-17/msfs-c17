@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import CFG, { TCFGProps } from "./index";
 
 export default {
-  title: "Displays/Index/CFG",
+  title: "Displays/MFD/CFG",
   component: CFG,
   argTypes: {
     aileronPosition: {

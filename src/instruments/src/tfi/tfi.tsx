@@ -1,6 +1,6 @@
 import React from "react";
 import { TFIContainer, DigitsOn, DigitsOff } from "./styles";
-import { TFILCDMonoFont } from "../../../globals/fonts/tfi-lcd-mono";
+import TFILCDMonoFont from "../../../globals/fonts/tfi-lcd-mono";
 
 export type TTFIProps = {
   displayMode: EDisplayModes;

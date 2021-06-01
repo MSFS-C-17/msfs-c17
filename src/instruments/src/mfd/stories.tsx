@@ -3,7 +3,7 @@ import { MFD, EDisplayModes, EMFDViews, TMFDProps } from "./mfd";
 import { TCFGProps } from "./views/cfg";
 
 export default {
-  title: "Displays/Index",
+  title: "Displays/MFD",
   component: MFD,
   argTypes: {
     displayView: {

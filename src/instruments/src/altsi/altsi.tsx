@@ -1,7 +1,7 @@
 import React from "react";
 import { AltSIContainer, DigitsWrapper } from "./styles";
 import * as LCD from "../components/lcd-common";
-import { LCD14Font } from "../../../globals/fonts/lcd14";
+import LCD14 from "../../../globals/fonts/lcd14";
 
 export type TAltSIProps = {
   displayMode: EDisplayModes;
@@ -26,7 +26,7 @@ export const AltSI: React.FC<TAltSIProps> = ({
 
   return (
     <>
-      <LCD14Font />
+      <LCD14 />
       <AltSIContainer>
         {displayMode === EDisplayModes.ON && (
           <DigitsWrapper>

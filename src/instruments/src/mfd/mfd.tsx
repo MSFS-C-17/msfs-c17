@@ -5,7 +5,7 @@ import PPI from "./views/ppi";
 import ENG, { TENGProps } from "./views/eng";
 import CFG, { TCFGProps } from "./views/cfg";
 import { MFDContainer } from "./styles";
-import { EReverserStatus } from "./views/eng/components/reverser-status";
+import DYMOSymbols from "../../../globals/fonts/dymo-symbols";
 
 export enum EMFDViews {
   PFD = "PFD",
