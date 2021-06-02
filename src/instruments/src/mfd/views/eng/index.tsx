@@ -6,6 +6,7 @@ import { N1RPMPercent } from "./components/n1-rpm-percent";
 import { EPRReadout } from "./components/epr-readout";
 import { MaxEGT } from "./components/max-egt";
 import { FuelFlow } from "./components/fuel-flow";
+import { ENGSimVars } from "./simvars";
 
 export type TENGProps = {
   engine1N1RPM: number;
@@ -70,6 +71,8 @@ export const ENG: React.FC<TENGProps> = ({
     engine3FuelFlowPPH +
     engine4FuelFlowPPH;
 
+  console.log("tf", totalFuelFlow);
+
   return (
     <ENGView>
       <svg version="1.1" x="0px" y="0px" viewBox="0 0 800 800">
@@ -133,6 +136,10 @@ export const ENG: React.FC<TENGProps> = ({
       </svg>
     </ENGView>
   );
+};
+
+export const EngScreen: React.FC = () => {
+  return <ENG {...ENGSimVars()} />;
 };
 
 export default ENG;

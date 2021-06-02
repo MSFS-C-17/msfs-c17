@@ -26,6 +26,7 @@ export default getInputs()
                 file: `${Directories.temp}/bundle.js`,
                 format: 'iife',
             },
+            watch:{},
             plugins: [
                 ...baseCompile(name, path),
                 getTemplatePlugin({ name, path, imports: ['/JS/dataStorage.js'], config, isInstrument }),

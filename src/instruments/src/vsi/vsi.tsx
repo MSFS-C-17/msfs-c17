@@ -1,5 +1,5 @@
 import React from "react";
-import LCD14Font from "../../../globals/fonts/lcd14";
+import DSEG14ClassicRegular from "../../../globals/fonts/dseg14-classic-regular";
 import { VSIContainer, DigitsWrapper } from "./styles";
 import * as LCD from "../components/lcd-common";
 
@@ -32,7 +32,7 @@ export const VSI: React.FC<THSIProps> = ({
 
   return (
     <>
-      <LCD14Font />
+      <DSEG14ClassicRegular />
       <VSIContainer>
         {displayMode === EDisplayModes.ON && (
           <DigitsWrapper>
@@ -44,8 +44,8 @@ export const VSI: React.FC<THSIProps> = ({
               <LCD.SmallDigits>{hundredsValue}</LCD.SmallDigits>
             </LCD.DigitsOn>
             <LCD.DigitsOff>
-              <LCD.BigDigits>¤¤¤</LCD.BigDigits>
-              <LCD.SmallDigits>¤¤¤</LCD.SmallDigits>
+              <LCD.BigDigits>~~~</LCD.BigDigits>
+              <LCD.SmallDigits>~~~</LCD.SmallDigits>
             </LCD.DigitsOff>
           </DigitsWrapper>
         )}

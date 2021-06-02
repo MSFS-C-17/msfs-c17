@@ -1,7 +1,8 @@
 import React from "react";
 import { AltSIContainer, DigitsWrapper } from "./styles";
 import * as LCD from "../components/lcd-common";
-import LCD14 from "../../../globals/fonts/lcd14";
+import DSEG14ClassicRegular from "../../../globals/fonts/dseg14-classic-regular";
+import { pad } from "../../utils/number-padding";
 
 export type TAltSIProps = {
   displayMode: EDisplayModes;
@@ -26,13 +27,15 @@ export const AltSI: React.FC<TAltSIProps> = ({
 
   return (
     <>
-      <LCD14 />
+      <DSEG14ClassicRegular />
       <AltSIContainer>
         {displayMode === EDisplayModes.ON && (
           <DigitsWrapper>
             <LCD.DigitsOn>
-              <LCD.BigDigits>{thousandsValue}</LCD.BigDigits>
-              <LCD.SmallDigits>{hundredsValue}</LCD.SmallDigits>
+              <LCD.BigDigits>
+                {thousandsValue > 0 && thousandsValue}
+              </LCD.BigDigits>
+              <LCD.SmallDigits>{pad(hundredsValue, 3)}</LCD.SmallDigits>
             </LCD.DigitsOn>
             <LCD.DigitsOff>
               <LCD.BigDigits>88</LCD.BigDigits>

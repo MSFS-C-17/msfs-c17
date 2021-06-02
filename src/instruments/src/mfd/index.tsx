@@ -1,66 +1,49 @@
-import React from "react";
+import React, { useState } from "react";
 import { render } from "@instruments/common/index";
 import { EDisplayModes, EMFDViews, MFD, TMFDProps } from "./mfd";
 import { useSimVar } from "@instruments/common/simVars";
-import { TCFGProps } from "./views/cfg";
-import { EngineSimVars } from "../../simVars/engines";
+import { useInteractionEvent } from "@instruments/common/hooks";
+
+const url: URL = new URL(
+  document.getElementsByTagName("c17a-mfd")[0].getAttribute("url")
+);
+const searchParams = url.searchParams;
+const pId = searchParams.get("pId");
 
 const Panel: React.FC = () => {
-  const [rightFlapsPosition] = useSimVar(
-    "TRAILING EDGE FLAPS RIGHT PERCENT",
-    "Number"
+  const [displayView, setDisplayView] = useState(
+    searchParams.get("displayView") || ""
   );
 
-  const [leftFlapsPosition] = useSimVar(
-    "TRAILING EDGE FLAPS LEFT PERCENT",
-    "Number"
-  );
+  // console.log(pId, displayView);
 
-  const [rudderPosition] = useSimVar("RUDDER POSITION", "Number");
-  const [elevatorPosition] = useSimVar("ELEVATOR POSITION", "Number");
-  const [aileronPosition] = useSimVar("AILERON POSITION", "Number");
-  const [leftSpoilerPosition] = useSimVar("SPOILERS LEFT POSITION", "Number");
-  const [rightSpoilerPosition] = useSimVar("SPOILERS RIGHT POSITION", "Number");
-  const [leftSlatsPosition] = useSimVar(
-    "LEADING EDGE FLAPS LEFT PERCENT",
-    "Number"
-  );
-  const [rightSlatsPosition] = useSimVar(
-    "LEADING EDGE FLAPS RIGHT PERCENT",
-    "Number"
-  );
-  const [rudderTrim] = useSimVar("RUDDER TRIM", "Number");
-  const [stabiliserTrim] = useSimVar("ELEVATOR TRIM POSITION", "Number");
-  const [aileronTrim] = useSimVar("AILERON TRIM", "Number");
-  const [leftFlapIndex] = useSimVar("TRAILING EDGE FLAPS LEFT INDEX", "Number");
-  const [rightFlapIndex] = useSimVar(
-    "TRAILING EDGE FLAPS RIGHT INDEX",
-    "Number"
-  );
-  const [gearPosition] = useSimVar("GEAR POSITION", "Number");
+  // define buttons
+  // const [pfdButton] = useSimVar(`${pId} BOTTOM 1`, "bool");
+  // const [ndButton] = useSimVar(`${pId} BOTTOM 2`, "bool");
+  // const [ppiButton] = useSimVar(`${pId} BOTTOM 3`, "bool");
+  useInteractionEvent(`L:${pId} BOTTOM 4`, (a, b, c) => {
+    console.log("a", a);
+    console.log("b", b);
+    console.log("c", c);
+  });
 
-  const cfgValues: TCFGProps = {
-    flapPosition: Math.max(leftFlapsPosition, rightFlapsPosition),
-    aileronPosition,
-    elevatorPosition,
-    rudderPosition,
-    spoilerPosition: Math.max(leftSpoilerPosition, rightSpoilerPosition),
-    slatPosition: Math.max(leftSlatsPosition, rightSlatsPosition),
-    flapIndex: Math.max(leftFlapIndex, rightFlapIndex),
-    rudderTrim,
-    stabiliserTrim,
-    aileronTrim,
-    gearPosition,
-    brakeTemperature: 0
-  };
+  const [test1] = useSimVar(`L:${pId} BOTTOM 4`, "number");
+  const [test2] = useSimVar(`${pId} BOTTOM 4`, "number");
+
+  console.log("test1", test1);
+  console.log("test2", test2);
+
+  // const [cfgButton] = useSimVar(`${pId} BOTTOM 5`, "bool");
+  // const [inopButton] = useSimVar(`${pId} BOTTOM 6`, "bool");
+
+  // console.log("engButton", engButton);
+  // console.log("cfgButton", cfgButton);
 
   const mfdProps: TMFDProps = {
     displayMode: EDisplayModes.DAY,
-    displayView: EMFDViews.ENG,
+    displayView: EMFDViews[displayView],
     brightness: 100,
-    contrast: 100,
-    cfgValues: cfgValues,
-    engValues: { ...EngineSimVars() }
+    contrast: 100
   };
 
   return <MFD {...mfdProps} />;

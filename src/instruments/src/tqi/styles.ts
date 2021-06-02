@@ -3,13 +3,12 @@ import { colors } from "../../../globals/colours";
 
 export const TQIContainer = styled.div`
   position: relative;
-  height: 50px;
-  width: 125px;
-  font-family: "TFI LCD Mono", monospace;
-  font-size: 48px;
+  height: 41px;
+  width: 130px;
+  font-family: "DSEG7Classic-Regular";
+  font-size: 30px;
   text-align: right;
   background-color: ${colors.DISPLAY_BLACK};
-  letter-spacing: 4px;
 `;
 
 export const DigitsOn = styled.div`
@@ -17,7 +16,6 @@ export const DigitsOn = styled.div`
   right: 5px;
   top: 5px;
   color: ${colors.DISPLAY_WHITE};
-  
 `;
 
 export const DigitsOff = styled.div`

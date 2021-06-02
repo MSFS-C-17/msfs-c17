@@ -1,7 +1,7 @@
 import React from "react";
 import { APPRContainer, DigitsWrapper, BigDigits } from "./styles";
 import * as LCD from "../components/lcd-common";
-import LCD14 from "../../../globals/fonts/lcd14";
+import DSEG14ClassicRegular from "../../../globals/fonts/dseg14-classic-regular";
 
 export type TAPPRProps = {
   displayMode: EDisplayModes;
@@ -19,17 +19,16 @@ export const APPR: React.FC<TAPPRProps> = ({
 }) => {
   return (
     <>
-      <LCD14 />
+      <DSEG14ClassicRegular />
       <APPRContainer>
         {displayMode === EDisplayModes.ON && (
           <DigitsWrapper>
             <LCD.DigitsOn>
-              <BigDigits>{deckAngle * 10}</BigDigits>
+              <BigDigits>{deckAngle > 0 ? deckAngle : "0.0"}</BigDigits>
             </LCD.DigitsOn>
             <LCD.DigitsOff>
               <BigDigits>88</BigDigits>
             </LCD.DigitsOff>
-            <LCD.Decimal />
           </DigitsWrapper>
         )}
       </APPRContainer>

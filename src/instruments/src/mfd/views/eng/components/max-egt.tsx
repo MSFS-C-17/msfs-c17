@@ -1,6 +1,7 @@
 import React from "react";
 import { SVGText } from "../../../styles";
 import { colors } from "../../../../../../globals/colours";
+import { pad } from "../../../../../utils/number-padding";
 
 export type TMaxEGT = {
   engine1ExhaustGasTemperature: number;
@@ -53,9 +54,7 @@ export const MaxEGT: React.FC<TMaxEGT> = ({
   const time: string = (() => {
     const minutes = Math.floor(displayTime / 60000);
     const seconds = ((displayTime % 60000) / 1000).toFixed(0);
-    return `${minutes < 10 ? "0" : ""}${minutes}:${
-      seconds < 10 ? "0" : ""
-    }${seconds}`;
+    return `${pad(minutes, 2, "0")}:${pad(seconds, 2, "0")}`;
   })();
 
   return (
@@ -72,7 +71,7 @@ export const MaxEGT: React.FC<TMaxEGT> = ({
         color={egtColor}
         transform="matrix(1 0 0 1 775 190)"
       >
-        {maxEGT}&deg;C
+        {Math.floor(maxEGT)}&deg;C
       </SVGText>
 
       <SVGText

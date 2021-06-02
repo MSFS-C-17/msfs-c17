@@ -1,7 +1,8 @@
 import React from "react";
 import { ASIContainer, DigitsWrapper } from "./styles";
 import * as LCD from "../components/lcd-common";
-import LCD14 from "../../../globals/fonts/lcd14";
+import DSEG14ClassicRegular from "../../../globals/fonts/dseg14-classic-regular";
+import { pad } from "../../utils/number-padding";
 
 export type TASIProps = {
   displayMode: EDisplayModes;
@@ -49,11 +50,11 @@ export const ASI: React.FC<TASIProps> = ({
   return (
     <>
       <ASIContainer>
-        <LCD14 />
+        <DSEG14ClassicRegular />
         {displayMode === EDisplayModes.ON && (
           <DigitsWrapper>
             <LCD.DigitsOn>
-              <LCD.BigDigits>{displayValue}</LCD.BigDigits>
+              <LCD.BigDigits>{pad(displayValue, 6)}</LCD.BigDigits>
             </LCD.DigitsOn>
             <LCD.DigitsOff>
               <LCD.BigDigits>888888</LCD.BigDigits>

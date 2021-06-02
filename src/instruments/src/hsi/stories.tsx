@@ -17,7 +17,7 @@ export default {
     },
     headingDegrees: {
       defaultValue: 0,
-      control: { type: "number" }
+      control: { type: "range", min: 0, max: 359, step: 1 }
     }
   }
 };

@@ -1,46 +1,39 @@
 import React from "react";
-import { SED, TSEDProps } from "./sed";
+import { EDisplayModes, ESEDMode, ESEDSelect, SED, TSEDProps } from "./sed";
 import { render } from "@instruments/common/index";
-import { EngineSimVars } from "../../simVars/engines";
+// import { useSimVar } from "@instruments/common/simVars";
+import { sedSimVars } from "./simvars";
+import { useInteractionEvent } from "@instruments/common/hooks";
+import { useSimVar } from "@instruments/common/simVars";
 
-const {
-  engine1N1RPM,
-  engine2N1RPM,
-  engine3N1RPM,
-  engine4N1RPM,
-  engine1N2RPM,
-  engine2N2RPM,
-  engine3N2RPM,
-  engine4N2RPM,
-  engine1ExhaustGasTemperature,
-  engine2ExhaustGasTemperature,
-  engine3ExhaustGasTemperature,
-  engine4ExhaustGasTemperature,
-  engine1PressureRatio,
-  engine2PressureRatio,
-  engine3PressureRatio,
-  engine4PressureRatio
-} = EngineSimVars();
+const Panel = () => {
+  const sedProps: TSEDProps = {
+    ...sedSimVars(),
+    select: ESEDSelect.N2,
+    mode: ESEDMode.MCT,
+    setRating: 1.42,
+    displayMode: EDisplayModes.ON
+  };
 
-const sedProps: TSEDProps = {
-  engine1N1RPM,
-  engine2N1RPM,
-  engine3N1RPM,
-  engine4N1RPM,
-  engine1N2RPM,
-  engine2N2RPM,
-  engine3N2RPM,
-  engine4N2RPM,
-  engine1ExhaustGasTemperature,
-  engine2ExhaustGasTemperature,
-  engine3ExhaustGasTemperature,
-  engine4ExhaustGasTemperature,
-  engine1PressureRatio,
-  engine2PressureRatio,
-  engine3PressureRatio,
-  engine4PressureRatio
+  //define sed buttons
+
+  // let mode = ESEDMode.MCT;
+  useInteractionEvent("L:SED_MODE_MAX", () => {
+    console.log("-->", ESEDMode.MAX);
+  });
+
+  const [sedModeMax] = useSimVar("L:SED_MODE_MAX", "number");
+
+  console.log("!->", sedModeMax);
+
+  // // useInteractionEvent("L:SED_MODE_INT", () => (mode = ESEDMode.INT));
+  // // useInteractionEvent("L:SED_MODE_MCT", () => (mode = ESEDMode.MCT));
+  // // useInteractionEvent("L:SED_MODE_DRT", () => (mode = ESEDMode.DRT));
+  // // useInteractionEvent("L:SED_MODE_MAN", () => (mode = ESEDMode.MAN));
+  //
+  // console.log("mode", mode);
+
+  return <SED {...sedProps} />;
 };
-
-const Panel = () => <SED {...sedProps} />;
 
 render(<Panel />);

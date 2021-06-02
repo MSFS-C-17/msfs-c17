@@ -9,13 +9,13 @@ export const SEDContainer = styled.div`
 `;
 
 export const PrimaryTitle = styled(SVGText)`
-  font-family: "DYMO-Symbols";
+  font-family: "DYMO Symbols";
   font-size: 46px;
   fill: ${colors.DISPLAY_WHITE};
 `;
 
 export const SecondaryTitle = styled(SVGText)`
-  font-family: "DYMO-Symbols";
+  font-family: "DYMO Symbols";
   font-size: 46px;
   fill: ${colors.DISPLAY_WHITE};
 `;

@@ -6,7 +6,7 @@ export const Container = styled.div`
   position: relative;
   width: 512px;
   height: 102px;
-  font-family: LCD14, monospace;
+  font-family: "DSEG14Classic-Regular", monospace;
   background-color: ${colors.DISPLAY_BLACK};
   display: flex;
 `;
@@ -48,21 +48,6 @@ export const SmallDigits = styled.span`
   line-height: 0.8;
 `;
 
-const DecimalContainer = styled.svg`
-  position: absolute;
-  top: 68px;
-  left: 50%;
-  transform: translateX(-60%);
-`;
-
 const DecimalRect = styled.rect`
   fill: rgb(255, 255, 255);
 `;
-
-export const Decimal = () => {
-  return (
-    <DecimalContainer width="10" height="10">
-      <DecimalRect width="9" height="9" />
-    </DecimalContainer>
-  );
-};

@@ -1,5 +1,5 @@
 import React from "react";
-import { WCAP } from "./wcap";
+import { WAP } from "./wap";
 
 enum EDisplayModes {
   OFF,
@@ -8,22 +8,18 @@ enum EDisplayModes {
 
 export default {
   title: "Warning and Caution Annunciation Panel",
-  component: WCAP,
+  component: WAP,
   argTypes: {
     displayMode: {
       defaultValue: EDisplayModes.ON,
       options: Object.keys(EDisplayModes),
       control: { type: "select" }
-    },
-    deckAngle: {
-      defaultValue: 0.0,
-      control: { type: "range", min: 0, max: 9.9, step: 0.1 }
     }
   }
 };
 
 export const _WarningAndCautionAnnunciationPanel = (args) => (
   <>
-    <WCAP {...args} />
+    <WAP {...args} />
   </>
 );

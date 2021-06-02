@@ -1,6 +1,6 @@
 import React from "react";
 import { TQIContainer, DigitsOn, DigitsOff } from "./styles";
-import TFILCDMonoFont from "../../../globals/fonts/tfi-lcd-mono";
+import DSEG7ClassicRegular from "../../../globals/fonts/dseg7-classic-regular";
 
 export type TQIProps = {
   displayMode: EDisplayModes;
@@ -15,7 +15,7 @@ export enum EDisplayModes {
 export const TQI: React.FC<TQIProps> = ({ displayMode, fuelAmount = 0 }) => {
   return (
     <>
-      <TFILCDMonoFont />
+      <DSEG7ClassicRegular />
       <TQIContainer>
         {displayMode === EDisplayModes.ON && (
           <>

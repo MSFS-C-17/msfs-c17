@@ -34,26 +34,26 @@ export const N1RPMPercent: React.FC<TN1RPMPercentProps> = ({
         transform="matrix(1 0 0 1 180 736.1696)"
         textAnchor="end"
       >
-        {engine1N1RPM}
+        {(engine1N1RPM * 100).toFixed(1)}
       </SVGText>
       <SVGText
         color={colors.DISPLAY_GREEN}
         transform="matrix(1 0 0 1 315 736.1694)"
         textAnchor="end"
       >
-        {engine2N1RPM}
+        {(engine2N1RPM * 100).toFixed(1)}
       </SVGText>
       <SVGText
         color={colors.DISPLAY_GREEN}
         transform="matrix(1 0 0 1 481 736.1694)"
       >
-        {engine3N1RPM}
+        {(engine3N1RPM * 100).toFixed(1)}
       </SVGText>
       <SVGText
         color={colors.DISPLAY_GREEN}
         transform="matrix(1 0 0 1 617 736.1694)"
       >
-        {engine4N1RPM}
+        {(engine4N1RPM * 100).toFixed(1)}
       </SVGText>
     </>
   );

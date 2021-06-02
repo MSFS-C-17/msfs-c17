@@ -1,7 +1,8 @@
 import React from "react";
 import { HSIContainer, DigitsWrapper } from "./styles";
 import * as LCD from "../components/lcd-common";
-import LCD14 from "../../../globals/fonts/lcd14";
+import DSEG14ClassicRegular from "../../../globals/fonts/dseg14-classic-regular";
+import { pad } from "../../utils/number-padding";
 
 export type THSIProps = {
   displayMode: EDisplayModes;
@@ -22,12 +23,12 @@ export const HSI: React.FC<THSIProps> = ({
 
   return (
     <>
-      <LCD14 />
+      <DSEG14ClassicRegular />
       <HSIContainer>
         {displayMode === EDisplayModes.ON && (
           <DigitsWrapper>
             <LCD.DigitsOn>
-              <LCD.BigDigits>{displayValue}</LCD.BigDigits>
+              <LCD.BigDigits>{pad(displayValue, 4)}</LCD.BigDigits>
             </LCD.DigitsOn>
             <LCD.DigitsOff>
               <LCD.BigDigits>8888</LCD.BigDigits>

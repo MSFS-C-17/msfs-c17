@@ -1,6 +1,4 @@
 import React from "react";
-import { SVGPath, SVGText } from "../../../styles";
-import { colors } from "../../../../../../globals/colours";
 import { ReverserUnlockedIndicator } from "./reverser-unlocked-indicator";
 import { ReverserDeployedIndicator } from "./reverser-deployed-indicator";
 
@@ -22,9 +20,7 @@ export const ReverserStatus: React.FC<TReverserStatus> = ({ status, x }) => {
     }
 
     case EReverserStatus.DEPLOYED: {
-      return (
-        <ReverserDeployedIndicator x={x} y={-279} />
-      );
+      return <ReverserDeployedIndicator x={x} y={-279} />;
     }
 
     case EReverserStatus.STOWED:

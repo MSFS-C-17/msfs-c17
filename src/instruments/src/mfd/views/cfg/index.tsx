@@ -11,8 +11,8 @@ import { Spoilers } from "./components/spoilers";
 import { Elevators } from "./components/elevators";
 import { Rudder } from "./components/rudder";
 import { Slats } from "./components/slats";
-
 import { SVGPath, SVGText } from "../../styles";
+import { CFGSimVars } from "./simvars";
 
 export type TCFGProps = {
   aileronPosition: number;
@@ -103,5 +103,7 @@ export const CFG: React.FC<TCFGProps> = ({
     </CFGView>
   );
 };
+
+export const CfgScreen: React.FC = () => <CFG {...CFGSimVars()} />;
 
 export default CFG;

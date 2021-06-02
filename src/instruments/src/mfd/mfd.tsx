@@ -2,8 +2,8 @@ import React from "react";
 import PFD from "./views/pfd";
 import ND from "./views/nd";
 import PPI from "./views/ppi";
-import ENG, { TENGProps } from "./views/eng";
-import CFG, { TCFGProps } from "./views/cfg";
+import { EngScreen } from "./views/eng";
+import { CfgScreen } from "./views/cfg";
 import { MFDContainer } from "./styles";
 import DYMOSymbols from "../../../globals/fonts/dymo-symbols";
 
@@ -26,17 +26,13 @@ export type TMFDProps = {
   displayMode: EDisplayModes;
   brightness: number;
   contrast: number;
-  cfgValues: TCFGProps;
-  engValues: TENGProps;
 };
 
 export const MFD: React.FC<TMFDProps> = ({
   displayView = EMFDViews.CFG,
   displayMode = EDisplayModes.DAY,
   brightness = 100,
-  contrast = 100,
-  cfgValues,
-  engValues
+  contrast = 100
 }) => {
   const currentView = () => {
     if (displayMode === EDisplayModes.OFF) return <></>;
@@ -48,19 +44,23 @@ export const MFD: React.FC<TMFDProps> = ({
       case EMFDViews.PPI:
         return <PPI />;
       case EMFDViews.ENG:
-        return <ENG {...engValues} />;
+        return <EngScreen />;
       case EMFDViews.CFG:
-        return <CFG {...cfgValues} />;
+        return <CfgScreen />;
     }
   };
 
   return (
-    <MFDContainer
-      displayMode={displayMode}
-      brightness={brightness}
-      contrast={contrast}
-    >
-      {currentView()}
-    </MFDContainer>
+    <>
+      <DYMOSymbols />
+
+      <MFDContainer
+        displayMode={displayMode}
+        brightness={brightness}
+        contrast={contrast}
+      >
+        {currentView()}
+      </MFDContainer>
+    </>
   );
 };

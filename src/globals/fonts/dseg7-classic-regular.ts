@@ -3,7 +3,7 @@ import DSEG7ClassicRegular from "../../fonts/dseg7-classic-regular.ttf";
 
 export default createGlobalStyle`
     @font-face {
-        font-family: 'DYMO Symbols';
+        font-family: 'DSEG7Classic-Regular';
         src: url(${DSEG7ClassicRegular});
     }
 `;

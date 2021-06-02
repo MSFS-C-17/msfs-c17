@@ -3,13 +3,12 @@ import { colors } from "../../../globals/colours";
 
 export const TFIContainer = styled.div`
   position: relative;
-  height: 50px;
-  width: 120px;
-  font-family: "TFI LCD Mono", monospace;
-  font-size: 48px;
+  height: 41px;
+  width: 130px;
+  font-family: "DSEG7Classic-Regular";
+  font-size: 30px;
   text-align: right;
   background-color: ${colors.DISPLAY_BLACK};
-  letter-spacing: 4px;
   padding: 0 16px;
 `;
 
