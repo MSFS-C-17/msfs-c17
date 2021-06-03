@@ -1,4 +1,4 @@
-import { useSimVar } from "@instruments/common/simVars";
+import { useSimVar } from "../util";
 
 export const sedSimVars = () => {
   const [engine1ExhaustGasTemperature] = useSimVar(

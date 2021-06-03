@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import { render } from "@instruments/common/index";
 import { EDisplayModes, EMFDViews, MFD, TMFDProps } from "./mfd";
-import { useSimVar } from "@instruments/common/simVars";
-import { useInteractionEvent } from "@instruments/common/hooks";
+import { useSimVar, useInteractionEvent } from "../util";
 
 const url: URL = new URL(
   document.getElementsByTagName("c17a-mfd")[0].getAttribute("url")
